@@ -34,7 +34,7 @@ class GateManager:
         #self.__gateState = GateState.CLOSED
         #self.__carState = CarState.PARKED
         self.__animationManager = animationManager
-        self.__animationFrame = AnimationFrame(WHITE_COLOR, RANGE_MIN, RANGE_MAX, RANGE_MIN)
+        self.__animationFrame = AnimationFrame(WHITE_COLOR, RANGE_MIN, RANGE_MAX)
 
         self.__updateGateState()
         self.__initSetting()
@@ -56,28 +56,37 @@ class GateManager:
     
     def __updateCarState(self):
         # upUltrasonic = ACTIVE, digital = IDLE
-        if ((self.__upTimeToFlightSensor.getState() == UltrasonicState.ACTIVE) or
-           (self.__upTimeToFlightSensor.getState() == UltrasonicState.TRIGGERED)) and (self.__digitalSensor.getState() == DigitalState.IDLE):
-            self.__carState = CarState.PARKED
-            self.__animationFrame.newColor = WHITE_COLOR
-            self.__animationManager.changeAnimation(AnimationState.IDLE)
-        
+        print("self.__upTimeToFlightSensor.getState():", self.__upTimeToFlightSensor.getState())
+        print("self.__digitalSensor.getState():", self.__digitalSensor.getState())
+        if (((self.__upTimeToFlightSensor.getState() == UltrasonicState.ACTIVE) or (self.__upTimeToFlightSensor.getState() == UltrasonicState.TRIGGERED)) and 
+           (self.__digitalSensor.getState() == DigitalState.IDLE) and
+           ((self.__carState == CarState.APART_FROM) or (self.__carState == CarState.ENTERING))):
+            if self.__animationManager.isIdle():
+                self.__carState = CarState.PARKED
+                self.__animationFrame.newColor = WHITE_COLOR
+                self.__animationManager.changeAnimation(AnimationState.IDLE)
+            else:
+                self.__carState = CarState.ENTERING
+                self.__animationFrame.rangeMin = self.__downTimeToFlightSensor.getDetectedDistance()
+                self.__animationFrame.rangeMax = RANGE_MAX
+                self.__animationManager.changeAnimation(AnimationState.RANGE)
         # upUltrasonic = IDLE, digital = ACTIVE
-        elif (self.__upTimeToFlightSensor.getState() == UltrasonicState.IDLE) and (
-                (self.__digitalSensor.getState() == DigitalState.ACTIVE) or
-                (self.__digitalSensor.getState() == DigitalState.TRIGGERED)):
+        elif ((self.__upTimeToFlightSensor.getState() == UltrasonicState.IDLE) and
+             ((self.__digitalSensor.getState() == DigitalState.ACTIVE) or (self.__digitalSensor.getState() == DigitalState.TRIGGERED))):
             # carState = PARKED
             if self.__carState == CarState.PARKED:
                 self.__carState = CarState.DEPARTING
                 self.__animationFrame.newColor = WHITE_COLOR
                 self.__animationManager.changeAnimation(AnimationState.IDLE)
-
-            # carState = APART_FROM
-            elif self.__carState == CarState.APART_FROM:
-                self.__carState = CarState.ENTERING
-                self.__animationFrame.rangeMin = self.__downTimeToFlightSensor.getDetectedDistance()
-                self.__animationFrame.rangeMax = RANGE_MAX
-                self.__animationManager.changeAnimation(AnimationState.RANGE)
+            elif(self.__downTimeToFlightSensor.getState() == UltrasonicState.IDLE):
+                # carState = APART_FROM
+                if self.__carState == CarState.APART_FROM:
+                    self.__carState = CarState.ENTERING
+                    carDistance = self.__downTimeToFlightSensor.getDetectedDistance()
+                    rangeMin = carDistance if carDistance < RANGE_MAX else RANGE_MIN
+                    self.__animationFrame.rangeMin = rangeMin
+                    self.__animationFrame.rangeMax = RANGE_MAX
+                    self.__animationManager.changeAnimation(AnimationState.RANGE)
         
         # upUltrasonic = IDLE, digital = IDLE
         elif (self.__upTimeToFlightSensor.getState() == UltrasonicState.IDLE) and (self.__digitalSensor.getState() == DigitalState.IDLE):
@@ -86,6 +95,10 @@ class GateManager:
                 self.__carState = CarState.APART_FROM
                 self.__animationFrame.newColor = WHITE_COLOR
                 self.__animationManager.changeAnimation(AnimationState.IDLE)
+        elif (self.__carState == CarState.ENTERING):
+            if(self.__digitalSensor.getState() == DigitalState.ACTIVE or self.__digitalSensor.getState() == DigitalState.TRIGGERED):
+                print("Czary czary czary")
+                self.__animationManager.restartAnimation()
 
     def update(self):
         self.__updateCarState()

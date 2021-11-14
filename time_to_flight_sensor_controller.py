@@ -26,7 +26,7 @@ class TimeToFlightSensorController:
         self.__ultrasonicDistanceSensor = UltrasonicDistanceSensor(config.rangeMin, config.rangeMax, state)
 
     def __readData(self):
-        value = self.__sensor.range
+        value = self.__sensor.range / 10
         return value
     
     def update(self):

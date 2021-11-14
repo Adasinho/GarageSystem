@@ -5,7 +5,7 @@ class AnimationManager:
     def __init__(self, strip) -> None:
         self.__state = AnimationState.IDLE
         self.__animationPlayer = AnimationPlayer(strip, self.__state)
-        self.__animationFrame = AnimationFrame(Color(255,255,255,255), 0, 0, 100)
+        self.__animationFrame = AnimationFrame(Color(255,255,255,255), 0, 100)
 
     def update(self):
         self.__animationPlayer.update(self.__animationFrame)
@@ -13,6 +13,12 @@ class AnimationManager:
 
     def updateFrame(self, frame: AnimationFrame):
         self.__animationFrame = frame
+        
+    def isIdle(self):
+        return self.__animationPlayer.isIdle()
+    
+    def restartAnimation(self):
+        self.__animationPlayer.restartAnimation()
         
     def changeAnimation(self, newAnimation: AnimationState):
         if self.__state == newAnimation:

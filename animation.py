@@ -9,12 +9,11 @@ class Color:
         self.w = w
 
     def getColor(self):
-        return (self.r, self.g, self.b)
+        return (self.r, self.g, self.b, self.w)
 
 @dataclass
 class AnimationFrame:
     newColor: Color
-    value: float
     rangeMin: float
     rangeMax: float
 
@@ -41,6 +40,12 @@ class Animation:
 
     def nextFrame(self, frame: AnimationFrame):
         print("Frame")
+        
+    def isIdle(self):
+        return False
+    
+    def restartAnimation(self):
+        pass
 
     def getCurrentColor(self):
         return self._currentColor

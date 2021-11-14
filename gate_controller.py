@@ -14,7 +14,6 @@ class GateController:
         self.__digitalSensorController = digitalSensorController
         self.__closeMagneticSwitchController = closeMagneticSwitchController
         self.__openMagneticSwitchController = openMagneticSwitchController
-        self.__animationController = animationController
 
         self.__gateManager = GateManager(downTimeToFlightController.getSensor(),
                                          upTimeToFlightController.getSensor(),
@@ -29,7 +28,6 @@ class GateController:
         self.__digitalSensorController.update()
         self.__closeMagneticSwitchController.update()
         self.__openMagneticSwitchController.update()
-        self.__animationController.update()
 
         self.__gateManager.update()
 
