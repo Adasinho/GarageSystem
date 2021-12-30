@@ -9,7 +9,7 @@ class AnimationManager:
 
     def update(self):
         self.__animationPlayer.update(self.__animationFrame)
-        print("Animation state: ", self.__state)
+        ### print("Animation state: ", self.__state)
 
     def updateFrame(self, frame: AnimationFrame):
         self.__animationFrame = frame

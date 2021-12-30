@@ -28,7 +28,7 @@ class DigitalSensorController:
 
     def update(self):
         detected = self.__readData()
-        print("[" + self.__sensorName + "] detected: ", detected)
+        ### print("[" + self.__sensorName + "] detected: ", detected)
         self.__digitalDistanceSensor.update(detected)
 
     def getSensor(self):

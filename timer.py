@@ -7,6 +7,6 @@ class Timer:
         
     def isEnd(self):
         now = time.time()
-        print("startTime:", self.__startTime, ", now:", now)
-        print("passed time:", (self.__startTime + self.__timeout) < now)
+        ### print("startTime:", self.__startTime, ", now:", now)
+        ### print("passed time:", (self.__startTime + self.__timeout) < now)
         return (self.__startTime + self.__timeout) < now

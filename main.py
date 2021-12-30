@@ -11,16 +11,12 @@ import board
 import os
 
 if __name__ == '__main__':
-    print("start")
+    ### print("start")
 
     GPIO.setwarnings(False)
 
-    ECHO1_PIN = 27
-    TRIG1_PIN = 17
-    TRIG2_PIN = 3
-    ECHO2_PIN = 4
     RANGE_MIN = 0
-    RANGE_MAX = 400
+    RANGE_MAX = 150
 
     DIGITAL_DATA_PIN = 23
 
@@ -44,14 +40,14 @@ if __name__ == '__main__':
 
     try:
         while True:
-            os.system("clear")
-            print("loop")
+            #os.system("clear")
+            ### print("loop")
 
             gateController.update()
             carState = gateController.getCarState()
             parseCarState(carState)
             
-            time.sleep(1)
+            #time.sleep(1)
 
     except KeyboardInterrupt:
         print("end")

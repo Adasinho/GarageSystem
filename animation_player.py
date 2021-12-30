@@ -15,7 +15,7 @@ class AnimationTransition(Animation):
 
     def nextFrame(self, frame: AnimationFrame):
         if(not self.compareColors(self._currentColor, self.__targetColor)):
-            newColor: Color = self.transitionStep(self._currentColor, self.__targetColor, 10)
+            newColor: Color = self.transitionStep(self._currentColor, self.__targetColor, 20)
             self._currentColor = newColor
             self.__strip.fill(newColor.getColor())
             self.__strip.show()
@@ -43,9 +43,9 @@ class AnimationTransition(Animation):
         else:
             newColor.w = targetColor.w
 
-        print("[fromColor] red: ", fromColor.r, " green: ", fromColor.g, " blue: ", fromColor.b)
-        print("[targetColor] red: ", targetColor.r, " green: ", targetColor.g, " blue: ", targetColor.b)
-        print("[newColor] red: ", newColor.r, " green: ", newColor.g, " blue: ", newColor.b)
+        ### print("[fromColor] red: ", fromColor.r, " green: ", fromColor.g, " blue: ", fromColor.b)
+        ### print("[targetColor] red: ", targetColor.r, " green: ", targetColor.g, " blue: ", targetColor.b)
+        ### print("[newColor] red: ", newColor.r, " green: ", newColor.g, " blue: ", newColor.b)
 
         return newColor
 
@@ -67,16 +67,16 @@ class AnimationRange(Animation):
         self.__stepsArray = self.__initStepsArray()
         self.__timer = Timer(10)
         self.__lastStep = 100
-        print("Start timer")
+        ### print("Start timer")
     
     def nextFrame(self, frame: AnimationFrame):
         step = self.__valueToStep(frame.value)
         if step != self.__lastStep:
             self.__lastStep = step
             self.__timer = Timer(10)
-            print("Start timer")
+            ### print("Start timer")
             newColor: Color = self.__stepsArray[step]
-            print("step:", step, "r:", newColor.r, "g:", newColor.g, "b:", newColor.b)
+            ### print("step:", step, "r:", newColor.r, "g:", newColor.g, "b:", newColor.b)
             self._currentColor = newColor
             self.__strip.fill(newColor.getColor())
             self.__strip.show()
@@ -103,23 +103,23 @@ class AnimationRange(Animation):
     def __valueToStep(self, value) -> int:
         offset = self.__rangeMin
         maximum = self.__rangeMax - offset
-        print("maximum", maximum)
+        ### print("maximum", maximum)
 
         offsetValue = value - offset
-        print("offsetValue", offsetValue)
+        ### print("offsetValue", offsetValue)
         stepValue = maximum / (self.__steps - 1)
-        print("stepValue", stepValue)
+        ### print("stepValue", stepValue)
         ret = (offsetValue / stepValue)
-        print("ret [1]", ret)
+        ### print("ret [1]", ret)
         ret = round(ret) - 1
-        print("ret [2]", ret)
+        ### print("ret [2]", ret)
 
         if ret < 0:
             ret = 0
         elif ret > (self.__steps - 1):
             ret = self.__steps - 1
 
-        print("value:", value, "ret:", ret)
+        ### print("value:", value, "ret:", ret)
         return ret
 
 class AnimationPlayer:
@@ -131,7 +131,7 @@ class AnimationPlayer:
 
         self.__strip.fill(WHITE_COLOR.getColor())
         self.__strip.show()
-        print("AnimationPlayer init")
+        ### print("AnimationPlayer init")
 
     def changeAnimation(self, newState: AnimationState, frame: AnimationFrame):
         if self.__state != newState:

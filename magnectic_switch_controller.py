@@ -4,7 +4,7 @@ import RPi.GPIO as GPIO
 
 class MagneticSwitchController:
     def __init__(self, dataPin) -> None:
-        print("MAGNETIC")
+        ### print("MAGNETIC")
         self.__dataPin = dataPin
         self.__initialSettings()
 

@@ -20,7 +20,7 @@ class UltrasonicSensorController:
 
     def update(self):
         distance = self.__readData()
-        print("[" + self.__sensorName + "] distance: ", distance)
+        ### print("[" + self.__sensorName + "] distance: ", distance)
         self.__ultrasonicDistanceSensor.update(distance)
 
     def getSensor(self):

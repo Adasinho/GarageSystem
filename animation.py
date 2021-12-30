@@ -39,7 +39,7 @@ class Animation:
         return True
 
     def nextFrame(self, frame: AnimationFrame):
-        print("Frame")
+        ### print("Frame")
         
     def isIdle(self):
         return False
