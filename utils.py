@@ -3,10 +3,9 @@ from gate_manager import CarState
 from time_to_flight_sensor_controller import TimeToFlightSensorParams
 
 import board
-import VL53L1X
 from digitalio import DigitalInOut
-#from adafruit_vl53l0x import VL53L0X
-#from adafruit_vl53l1x import VL53L1X
+from adafruit_vl53l0x import VL53L0X
+import VL53L1X
 
 def parseCarState(carState: CarState):
     if carState == CarState.ENTERING:
@@ -48,6 +47,7 @@ def setSensorsUniqueAddress(configs: List[TimeToFlightSensorParams]):
         vl53.insert(i, VL53L1X.VL53L1X(i2c_bus=1))  # also performs VL53L0X hardware check
         # no need to change the address of the last VL53L0X sensor
         if i < len(xshut) - 1:
+            #vl53.insert(i, VL53L1X(i2c, i + 0x30))  # also performs VL53L0X hardware check
             # default address is 0x29. Change that to something else
             vl53[i].open()
             vl53[i].change_address(new_address=(i + 0x30))  # address assigned should NOT be already in use

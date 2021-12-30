@@ -39,13 +39,11 @@ class Animation:
         return True
 
     def nextFrame(self, frame: AnimationFrame):
+        pass
         ### print("Frame")
         
     def isIdle(self):
         return False
-    
-    def restartAnimation(self):
-        pass
 
     def getCurrentColor(self):
         return self._currentColor

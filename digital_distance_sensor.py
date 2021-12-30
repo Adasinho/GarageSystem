@@ -34,6 +34,6 @@ class DigitalDistanceSensor:
 
     def getState(self):
         return self.__state
-    
+
     def isActive(self):
         return self.__state == SensorState.TRIGGERED or self.__state == SensorState.ACTIVE

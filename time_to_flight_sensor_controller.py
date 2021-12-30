@@ -2,8 +2,7 @@ from adafruit_blinka.microcontroller.bcm283x.pin import Pin
 from ultrasonic_distance_sensor import UltrasonicDistanceSensor, SensorState
 from dataclasses import dataclass
 
-#import adafruit_vl53l0x
-#import adafruit_vl53l1x
+import adafruit_vl53l0x
 import VL53L1X
 import busio
 import board
@@ -29,7 +28,7 @@ class TimeToFlightSensorController:
         self.__ultrasonicDistanceSensor = UltrasonicDistanceSensor(config.rangeMin, config.rangeMax, state)
 
     def __readData(self):
-        self.__sensor.start_ranging(3)
+        self.__sensor.start_ranging(1)
         value = self.__sensor.get_distance() / 10
         self.__sensor.stop_ranging()
         return value

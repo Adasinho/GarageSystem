@@ -11,9 +11,9 @@ import board
 import os
 
 if __name__ == '__main__':
-    ### print("start")
+    print("start")
 
-    GPIO.setwarnings(False)
+    #GPIO.setwarnings(False)
 
     RANGE_MIN = 0
     RANGE_MAX = 150
@@ -47,7 +47,7 @@ if __name__ == '__main__':
             carState = gateController.getCarState()
             parseCarState(carState)
             
-            #time.sleep(1)
+            #time.sleep(0.1)
 
     except KeyboardInterrupt:
         print("end")

@@ -14,18 +14,16 @@ if __name__ == '__main__':
     TRIG2_PIN = 3
     ECHO2_PIN = 4
     START_OFFSET = 0
-    END_OFFSET = 400
+    END_OFFSET = 800
 
     print("2.")
-    sensor2 = TimeToFlightSensorController(START_OFFSET, END_OFFSET, "Czujnik ultradźwiękowy (góra)")
-    time.sleep(1)
+    sensor2 = TimeToFlightSensorController(START_OFFSET, END_OFFSET, "Czujnik ultradźwiękowy (góra)", 0x29)
+    time.sleep(0.1)
 
     try:
         while True:
-            print("loop")
-
             sensor2.update()            
-            time.sleep(1)
+            time.sleep(0.1)
 
     except KeyboardInterrupt:
         print("end")
