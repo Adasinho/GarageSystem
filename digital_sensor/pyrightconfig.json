@@ -1,0 +1,4 @@
+{
+    "include": ["grpc_src"], // Zamień "src" na nazwę folderu z kodem źródłowym
+    "exclude": ["**/node_modules", "**/__pycache__"]
+}

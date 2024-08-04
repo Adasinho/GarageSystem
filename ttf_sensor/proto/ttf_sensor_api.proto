@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package ttf_sensor_api;
+
+// The DigitalSensor service definition
+service TTFSensorService {
+    // Get sensor status
+    rpc GetMeasure (Measure) returns (MeasureResponse) {}
+}
+
+// The request message containing detect status
+message Measure {
+    int32 distance = 1;
+}
+
+// The response message containing success status
+message MeasureResponse {
+    bool success = 1;
+}

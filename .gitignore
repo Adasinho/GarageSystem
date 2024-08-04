@@ -1,0 +1,13 @@
+# digital_sensor (Python project)
+/digital_sensor/venv
+/digital_sensor/.vscode
+/digital_sensor/__pycache__
+
+# ttf_sensor (C++ project)
+/ttf_sensor/build
+
+# core (Python project)
+/core/__pycache__
+/core/venv
+
+/.vscode

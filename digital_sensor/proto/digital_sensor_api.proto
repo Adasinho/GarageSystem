@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package digital_sensor_api;
+
+enum SensorId {
+    UNKNOWN_SENSOR_ID = 0;
+    GATE_PRESENCE_SENSOR_ID = 1;
+}
+
+// The DigitalSensor service definition
+service DigitalSensorService {
+    // Get sensor status
+    rpc GetStatus (StatusRequest) returns (StatusResponse) {}
+}
+
+// The request message containing detect status
+message StatusRequest {
+    SensorId id = 1;
+}
+
+// The response message containing success status
+message StatusResponse {
+    bool success = 1;
+}
