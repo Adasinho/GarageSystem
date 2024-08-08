@@ -8,7 +8,7 @@ enum SensorId {
 }
 
 // The DigitalSensor service definition
-service DigitalSensorService {
+service DigitalSensor {
     // Get sensor status
     rpc GetStatus (StatusRequest) returns (StatusResponse) {}
 }

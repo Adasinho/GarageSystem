@@ -3,12 +3,8 @@
         "address_ip": "::",
         "port": "50051"
     },
-    "ttf_sensor_service_a": {
+    "ttf_sensor_service": {
         "address_ip": "::",
         "port": "50052"
-    },
-    "ttf_sensor_service_b": {
-        "address_ip": "::",
-        "port": "50053"
     }
 }

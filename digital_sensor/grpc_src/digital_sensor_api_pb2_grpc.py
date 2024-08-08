@@ -30,7 +30,7 @@ if _version_not_supported:
     )
 
 
-class DigitalSensorServiceStub(object):
+class DigitalSensorStub(object):
     """The DigitalSensor service definition
     """
 
@@ -41,13 +41,13 @@ class DigitalSensorServiceStub(object):
             channel: A grpc.Channel.
         """
         self.GetStatus = channel.unary_unary(
-                '/digital_sensor_api.DigitalSensorService/GetStatus',
+                '/digital_sensor_api.DigitalSensor/GetStatus',
                 request_serializer=digital__sensor__api__pb2.StatusRequest.SerializeToString,
                 response_deserializer=digital__sensor__api__pb2.StatusResponse.FromString,
                 _registered_method=True)
 
 
-class DigitalSensorServiceServicer(object):
+class DigitalSensorServicer(object):
     """The DigitalSensor service definition
     """
 
@@ -59,7 +59,7 @@ class DigitalSensorServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
 
-def add_DigitalSensorServiceServicer_to_server(servicer, server):
+def add_DigitalSensorServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'GetStatus': grpc.unary_unary_rpc_method_handler(
                     servicer.GetStatus,
@@ -68,13 +68,13 @@ def add_DigitalSensorServiceServicer_to_server(servicer, server):
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'digital_sensor_api.DigitalSensorService', rpc_method_handlers)
+            'digital_sensor_api.DigitalSensor', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('digital_sensor_api.DigitalSensorService', rpc_method_handlers)
+    server.add_registered_method_handlers('digital_sensor_api.DigitalSensor', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
-class DigitalSensorService(object):
+class DigitalSensor(object):
     """The DigitalSensor service definition
     """
 
@@ -92,7 +92,7 @@ class DigitalSensorService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/digital_sensor_api.DigitalSensorService/GetStatus',
+            '/digital_sensor_api.DigitalSensor/GetStatus',
             digital__sensor__api__pb2.StatusRequest.SerializeToString,
             digital__sensor__api__pb2.StatusResponse.FromString,
             options,

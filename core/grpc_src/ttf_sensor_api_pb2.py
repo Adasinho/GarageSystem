@@ -14,17 +14,19 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x14ttf_sensor_api.proto\x12\x0ettf_sensor_api\"\x1b\n\x07Measure\x12\x10\n\x08\x64istance\x18\x01 \x01(\x05\"\"\n\x0fMeasureResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x32\\\n\x10TTFSensorService\x12H\n\nGetMeasure\x12\x17.ttf_sensor_api.Measure\x1a\x1f.ttf_sensor_api.MeasureResponse\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x14ttf_sensor_api.proto\x12\x0ettf_sensor_api\"9\n\x0eMeasureRequest\x12\'\n\x02id\x18\x01 \x01(\x0e\x32\x1b.ttf_sensor_api.TTFSensorId\"#\n\x0fMeasureResponse\x12\x10\n\x08\x64istance\x18\x01 \x01(\x05*\xb2\x01\n\x0bTTFSensorId\x12\x19\n\x15UNKNOWN_TTF_SENSOR_ID\x10\x00\x12 \n\x1cGATE_A_PARKING_TTF_SENSOR_ID\x10\x01\x12!\n\x1dGATE_A_POSITION_TTF_SENSOR_ID\x10\x02\x12 \n\x1cGATE_B_PARKING_TTF_SENSOR_ID\x10\x03\x12!\n\x1dGATE_B_POSITION_TTF_SENSOR_ID\x10\x04\x32\\\n\tTTFSensor\x12O\n\nGetMeasure\x12\x1e.ttf_sensor_api.MeasureRequest\x1a\x1f.ttf_sensor_api.MeasureResponse\"\x00\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'ttf_sensor_api_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
   DESCRIPTOR._loaded_options = None
-  _globals['_MEASURE']._serialized_start=40
-  _globals['_MEASURE']._serialized_end=67
-  _globals['_MEASURERESPONSE']._serialized_start=69
-  _globals['_MEASURERESPONSE']._serialized_end=103
-  _globals['_TTFSENSORSERVICE']._serialized_start=105
-  _globals['_TTFSENSORSERVICE']._serialized_end=197
+  _globals['_TTFSENSORID']._serialized_start=137
+  _globals['_TTFSENSORID']._serialized_end=315
+  _globals['_MEASUREREQUEST']._serialized_start=40
+  _globals['_MEASUREREQUEST']._serialized_end=97
+  _globals['_MEASURERESPONSE']._serialized_start=99
+  _globals['_MEASURERESPONSE']._serialized_end=134
+  _globals['_TTFSENSOR']._serialized_start=317
+  _globals['_TTFSENSOR']._serialized_end=409
 # @@protoc_insertion_point(module_scope)

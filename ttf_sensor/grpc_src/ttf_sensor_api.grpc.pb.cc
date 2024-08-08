@@ -21,60 +21,60 @@
 #include <grpcpp/support/sync_stream.h>
 namespace ttf_sensor_api {
 
-static const char* TTFSensorService_method_names[] = {
-  "/ttf_sensor_api.TTFSensorService/GetMeasure",
+static const char* TTFSensor_method_names[] = {
+  "/ttf_sensor_api.TTFSensor/GetMeasure",
 };
 
-std::unique_ptr< TTFSensorService::Stub> TTFSensorService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
+std::unique_ptr< TTFSensor::Stub> TTFSensor::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
   (void)options;
-  std::unique_ptr< TTFSensorService::Stub> stub(new TTFSensorService::Stub(channel, options));
+  std::unique_ptr< TTFSensor::Stub> stub(new TTFSensor::Stub(channel, options));
   return stub;
 }
 
-TTFSensorService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
-  : channel_(channel), rpcmethod_GetMeasure_(TTFSensorService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+TTFSensor::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
+  : channel_(channel), rpcmethod_GetMeasure_(TTFSensor_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
-::grpc::Status TTFSensorService::Stub::GetMeasure(::grpc::ClientContext* context, const ::ttf_sensor_api::Measure& request, ::ttf_sensor_api::MeasureResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::ttf_sensor_api::Measure, ::ttf_sensor_api::MeasureResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetMeasure_, context, request, response);
+::grpc::Status TTFSensor::Stub::GetMeasure(::grpc::ClientContext* context, const ::ttf_sensor_api::MeasureRequest& request, ::ttf_sensor_api::MeasureResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::ttf_sensor_api::MeasureRequest, ::ttf_sensor_api::MeasureResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetMeasure_, context, request, response);
 }
 
-void TTFSensorService::Stub::async::GetMeasure(::grpc::ClientContext* context, const ::ttf_sensor_api::Measure* request, ::ttf_sensor_api::MeasureResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::ttf_sensor_api::Measure, ::ttf_sensor_api::MeasureResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetMeasure_, context, request, response, std::move(f));
+void TTFSensor::Stub::async::GetMeasure(::grpc::ClientContext* context, const ::ttf_sensor_api::MeasureRequest* request, ::ttf_sensor_api::MeasureResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::ttf_sensor_api::MeasureRequest, ::ttf_sensor_api::MeasureResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetMeasure_, context, request, response, std::move(f));
 }
 
-void TTFSensorService::Stub::async::GetMeasure(::grpc::ClientContext* context, const ::ttf_sensor_api::Measure* request, ::ttf_sensor_api::MeasureResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+void TTFSensor::Stub::async::GetMeasure(::grpc::ClientContext* context, const ::ttf_sensor_api::MeasureRequest* request, ::ttf_sensor_api::MeasureResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetMeasure_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::ttf_sensor_api::MeasureResponse>* TTFSensorService::Stub::PrepareAsyncGetMeasureRaw(::grpc::ClientContext* context, const ::ttf_sensor_api::Measure& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::ttf_sensor_api::MeasureResponse, ::ttf_sensor_api::Measure, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetMeasure_, context, request);
+::grpc::ClientAsyncResponseReader< ::ttf_sensor_api::MeasureResponse>* TTFSensor::Stub::PrepareAsyncGetMeasureRaw(::grpc::ClientContext* context, const ::ttf_sensor_api::MeasureRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::ttf_sensor_api::MeasureResponse, ::ttf_sensor_api::MeasureRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetMeasure_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::ttf_sensor_api::MeasureResponse>* TTFSensorService::Stub::AsyncGetMeasureRaw(::grpc::ClientContext* context, const ::ttf_sensor_api::Measure& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::ttf_sensor_api::MeasureResponse>* TTFSensor::Stub::AsyncGetMeasureRaw(::grpc::ClientContext* context, const ::ttf_sensor_api::MeasureRequest& request, ::grpc::CompletionQueue* cq) {
   auto* result =
     this->PrepareAsyncGetMeasureRaw(context, request, cq);
   result->StartCall();
   return result;
 }
 
-TTFSensorService::Service::Service() {
+TTFSensor::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      TTFSensorService_method_names[0],
+      TTFSensor_method_names[0],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< TTFSensorService::Service, ::ttf_sensor_api::Measure, ::ttf_sensor_api::MeasureResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
-          [](TTFSensorService::Service* service,
+      new ::grpc::internal::RpcMethodHandler< TTFSensor::Service, ::ttf_sensor_api::MeasureRequest, ::ttf_sensor_api::MeasureResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](TTFSensor::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::ttf_sensor_api::Measure* req,
+             const ::ttf_sensor_api::MeasureRequest* req,
              ::ttf_sensor_api::MeasureResponse* resp) {
                return service->GetMeasure(ctx, req, resp);
              }, this)));
 }
 
-TTFSensorService::Service::~Service() {
+TTFSensor::Service::~Service() {
 }
 
-::grpc::Status TTFSensorService::Service::GetMeasure(::grpc::ServerContext* context, const ::ttf_sensor_api::Measure* request, ::ttf_sensor_api::MeasureResponse* response) {
+::grpc::Status TTFSensor::Service::GetMeasure(::grpc::ServerContext* context, const ::ttf_sensor_api::MeasureRequest* request, ::ttf_sensor_api::MeasureResponse* response) {
   (void) context;
   (void) request;
   (void) response;

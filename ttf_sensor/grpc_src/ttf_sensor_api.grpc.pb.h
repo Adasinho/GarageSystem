@@ -28,51 +28,51 @@
 namespace ttf_sensor_api {
 
 // The DigitalSensor service definition
-class TTFSensorService final {
+class TTFSensor final {
  public:
   static constexpr char const* service_full_name() {
-    return "ttf_sensor_api.TTFSensorService";
+    return "ttf_sensor_api.TTFSensor";
   }
   class StubInterface {
    public:
     virtual ~StubInterface() {}
     // Get sensor status
-    virtual ::grpc::Status GetMeasure(::grpc::ClientContext* context, const ::ttf_sensor_api::Measure& request, ::ttf_sensor_api::MeasureResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::ttf_sensor_api::MeasureResponse>> AsyncGetMeasure(::grpc::ClientContext* context, const ::ttf_sensor_api::Measure& request, ::grpc::CompletionQueue* cq) {
+    virtual ::grpc::Status GetMeasure(::grpc::ClientContext* context, const ::ttf_sensor_api::MeasureRequest& request, ::ttf_sensor_api::MeasureResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::ttf_sensor_api::MeasureResponse>> AsyncGetMeasure(::grpc::ClientContext* context, const ::ttf_sensor_api::MeasureRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::ttf_sensor_api::MeasureResponse>>(AsyncGetMeasureRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::ttf_sensor_api::MeasureResponse>> PrepareAsyncGetMeasure(::grpc::ClientContext* context, const ::ttf_sensor_api::Measure& request, ::grpc::CompletionQueue* cq) {
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::ttf_sensor_api::MeasureResponse>> PrepareAsyncGetMeasure(::grpc::ClientContext* context, const ::ttf_sensor_api::MeasureRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::ttf_sensor_api::MeasureResponse>>(PrepareAsyncGetMeasureRaw(context, request, cq));
     }
     class async_interface {
      public:
       virtual ~async_interface() {}
       // Get sensor status
-      virtual void GetMeasure(::grpc::ClientContext* context, const ::ttf_sensor_api::Measure* request, ::ttf_sensor_api::MeasureResponse* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void GetMeasure(::grpc::ClientContext* context, const ::ttf_sensor_api::Measure* request, ::ttf_sensor_api::MeasureResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void GetMeasure(::grpc::ClientContext* context, const ::ttf_sensor_api::MeasureRequest* request, ::ttf_sensor_api::MeasureResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void GetMeasure(::grpc::ClientContext* context, const ::ttf_sensor_api::MeasureRequest* request, ::ttf_sensor_api::MeasureResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
     class async_interface* experimental_async() { return async(); }
    private:
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::ttf_sensor_api::MeasureResponse>* AsyncGetMeasureRaw(::grpc::ClientContext* context, const ::ttf_sensor_api::Measure& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::ttf_sensor_api::MeasureResponse>* PrepareAsyncGetMeasureRaw(::grpc::ClientContext* context, const ::ttf_sensor_api::Measure& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::ttf_sensor_api::MeasureResponse>* AsyncGetMeasureRaw(::grpc::ClientContext* context, const ::ttf_sensor_api::MeasureRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::ttf_sensor_api::MeasureResponse>* PrepareAsyncGetMeasureRaw(::grpc::ClientContext* context, const ::ttf_sensor_api::MeasureRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
     Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
-    ::grpc::Status GetMeasure(::grpc::ClientContext* context, const ::ttf_sensor_api::Measure& request, ::ttf_sensor_api::MeasureResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::ttf_sensor_api::MeasureResponse>> AsyncGetMeasure(::grpc::ClientContext* context, const ::ttf_sensor_api::Measure& request, ::grpc::CompletionQueue* cq) {
+    ::grpc::Status GetMeasure(::grpc::ClientContext* context, const ::ttf_sensor_api::MeasureRequest& request, ::ttf_sensor_api::MeasureResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::ttf_sensor_api::MeasureResponse>> AsyncGetMeasure(::grpc::ClientContext* context, const ::ttf_sensor_api::MeasureRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::ttf_sensor_api::MeasureResponse>>(AsyncGetMeasureRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::ttf_sensor_api::MeasureResponse>> PrepareAsyncGetMeasure(::grpc::ClientContext* context, const ::ttf_sensor_api::Measure& request, ::grpc::CompletionQueue* cq) {
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::ttf_sensor_api::MeasureResponse>> PrepareAsyncGetMeasure(::grpc::ClientContext* context, const ::ttf_sensor_api::MeasureRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::ttf_sensor_api::MeasureResponse>>(PrepareAsyncGetMeasureRaw(context, request, cq));
     }
     class async final :
       public StubInterface::async_interface {
      public:
-      void GetMeasure(::grpc::ClientContext* context, const ::ttf_sensor_api::Measure* request, ::ttf_sensor_api::MeasureResponse* response, std::function<void(::grpc::Status)>) override;
-      void GetMeasure(::grpc::ClientContext* context, const ::ttf_sensor_api::Measure* request, ::ttf_sensor_api::MeasureResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void GetMeasure(::grpc::ClientContext* context, const ::ttf_sensor_api::MeasureRequest* request, ::ttf_sensor_api::MeasureResponse* response, std::function<void(::grpc::Status)>) override;
+      void GetMeasure(::grpc::ClientContext* context, const ::ttf_sensor_api::MeasureRequest* request, ::ttf_sensor_api::MeasureResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -84,8 +84,8 @@ class TTFSensorService final {
    private:
     std::shared_ptr< ::grpc::ChannelInterface> channel_;
     class async async_stub_{this};
-    ::grpc::ClientAsyncResponseReader< ::ttf_sensor_api::MeasureResponse>* AsyncGetMeasureRaw(::grpc::ClientContext* context, const ::ttf_sensor_api::Measure& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::ttf_sensor_api::MeasureResponse>* PrepareAsyncGetMeasureRaw(::grpc::ClientContext* context, const ::ttf_sensor_api::Measure& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::ttf_sensor_api::MeasureResponse>* AsyncGetMeasureRaw(::grpc::ClientContext* context, const ::ttf_sensor_api::MeasureRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::ttf_sensor_api::MeasureResponse>* PrepareAsyncGetMeasureRaw(::grpc::ClientContext* context, const ::ttf_sensor_api::MeasureRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_GetMeasure_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
@@ -95,7 +95,7 @@ class TTFSensorService final {
     Service();
     virtual ~Service();
     // Get sensor status
-    virtual ::grpc::Status GetMeasure(::grpc::ServerContext* context, const ::ttf_sensor_api::Measure* request, ::ttf_sensor_api::MeasureResponse* response);
+    virtual ::grpc::Status GetMeasure(::grpc::ServerContext* context, const ::ttf_sensor_api::MeasureRequest* request, ::ttf_sensor_api::MeasureResponse* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_GetMeasure : public BaseClass {
@@ -109,11 +109,11 @@ class TTFSensorService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetMeasure(::grpc::ServerContext* /*context*/, const ::ttf_sensor_api::Measure* /*request*/, ::ttf_sensor_api::MeasureResponse* /*response*/) override {
+    ::grpc::Status GetMeasure(::grpc::ServerContext* /*context*/, const ::ttf_sensor_api::MeasureRequest* /*request*/, ::ttf_sensor_api::MeasureResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestGetMeasure(::grpc::ServerContext* context, ::ttf_sensor_api::Measure* request, ::grpc::ServerAsyncResponseWriter< ::ttf_sensor_api::MeasureResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestGetMeasure(::grpc::ServerContext* context, ::ttf_sensor_api::MeasureRequest* request, ::grpc::ServerAsyncResponseWriter< ::ttf_sensor_api::MeasureResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -125,25 +125,25 @@ class TTFSensorService final {
    public:
     WithCallbackMethod_GetMeasure() {
       ::grpc::Service::MarkMethodCallback(0,
-          new ::grpc::internal::CallbackUnaryHandler< ::ttf_sensor_api::Measure, ::ttf_sensor_api::MeasureResponse>(
+          new ::grpc::internal::CallbackUnaryHandler< ::ttf_sensor_api::MeasureRequest, ::ttf_sensor_api::MeasureResponse>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::ttf_sensor_api::Measure* request, ::ttf_sensor_api::MeasureResponse* response) { return this->GetMeasure(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::ttf_sensor_api::MeasureRequest* request, ::ttf_sensor_api::MeasureResponse* response) { return this->GetMeasure(context, request, response); }));}
     void SetMessageAllocatorFor_GetMeasure(
-        ::grpc::MessageAllocator< ::ttf_sensor_api::Measure, ::ttf_sensor_api::MeasureResponse>* allocator) {
+        ::grpc::MessageAllocator< ::ttf_sensor_api::MeasureRequest, ::ttf_sensor_api::MeasureResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::ttf_sensor_api::Measure, ::ttf_sensor_api::MeasureResponse>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::ttf_sensor_api::MeasureRequest, ::ttf_sensor_api::MeasureResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~WithCallbackMethod_GetMeasure() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetMeasure(::grpc::ServerContext* /*context*/, const ::ttf_sensor_api::Measure* /*request*/, ::ttf_sensor_api::MeasureResponse* /*response*/) override {
+    ::grpc::Status GetMeasure(::grpc::ServerContext* /*context*/, const ::ttf_sensor_api::MeasureRequest* /*request*/, ::ttf_sensor_api::MeasureResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* GetMeasure(
-      ::grpc::CallbackServerContext* /*context*/, const ::ttf_sensor_api::Measure* /*request*/, ::ttf_sensor_api::MeasureResponse* /*response*/)  { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::ttf_sensor_api::MeasureRequest* /*request*/, ::ttf_sensor_api::MeasureResponse* /*response*/)  { return nullptr; }
   };
   typedef WithCallbackMethod_GetMeasure<Service > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
@@ -159,7 +159,7 @@ class TTFSensorService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetMeasure(::grpc::ServerContext* /*context*/, const ::ttf_sensor_api::Measure* /*request*/, ::ttf_sensor_api::MeasureResponse* /*response*/) override {
+    ::grpc::Status GetMeasure(::grpc::ServerContext* /*context*/, const ::ttf_sensor_api::MeasureRequest* /*request*/, ::ttf_sensor_api::MeasureResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -176,7 +176,7 @@ class TTFSensorService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetMeasure(::grpc::ServerContext* /*context*/, const ::ttf_sensor_api::Measure* /*request*/, ::ttf_sensor_api::MeasureResponse* /*response*/) override {
+    ::grpc::Status GetMeasure(::grpc::ServerContext* /*context*/, const ::ttf_sensor_api::MeasureRequest* /*request*/, ::ttf_sensor_api::MeasureResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -199,7 +199,7 @@ class TTFSensorService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetMeasure(::grpc::ServerContext* /*context*/, const ::ttf_sensor_api::Measure* /*request*/, ::ttf_sensor_api::MeasureResponse* /*response*/) override {
+    ::grpc::Status GetMeasure(::grpc::ServerContext* /*context*/, const ::ttf_sensor_api::MeasureRequest* /*request*/, ::ttf_sensor_api::MeasureResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -214,10 +214,10 @@ class TTFSensorService final {
     WithStreamedUnaryMethod_GetMeasure() {
       ::grpc::Service::MarkMethodStreamed(0,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::ttf_sensor_api::Measure, ::ttf_sensor_api::MeasureResponse>(
+          ::ttf_sensor_api::MeasureRequest, ::ttf_sensor_api::MeasureResponse>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::ttf_sensor_api::Measure, ::ttf_sensor_api::MeasureResponse>* streamer) {
+                     ::ttf_sensor_api::MeasureRequest, ::ttf_sensor_api::MeasureResponse>* streamer) {
                        return this->StreamedGetMeasure(context,
                          streamer);
                   }));
@@ -226,12 +226,12 @@ class TTFSensorService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status GetMeasure(::grpc::ServerContext* /*context*/, const ::ttf_sensor_api::Measure* /*request*/, ::ttf_sensor_api::MeasureResponse* /*response*/) override {
+    ::grpc::Status GetMeasure(::grpc::ServerContext* /*context*/, const ::ttf_sensor_api::MeasureRequest* /*request*/, ::ttf_sensor_api::MeasureResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedGetMeasure(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::ttf_sensor_api::Measure,::ttf_sensor_api::MeasureResponse>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedGetMeasure(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::ttf_sensor_api::MeasureRequest,::ttf_sensor_api::MeasureResponse>* server_unary_streamer) = 0;
   };
   typedef WithStreamedUnaryMethod_GetMeasure<Service > StreamedUnaryService;
   typedef Service SplitStreamedService;

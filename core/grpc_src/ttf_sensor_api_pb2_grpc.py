@@ -30,7 +30,7 @@ if _version_not_supported:
     )
 
 
-class TTFSensorServiceStub(object):
+class TTFSensorStub(object):
     """The DigitalSensor service definition
     """
 
@@ -41,13 +41,13 @@ class TTFSensorServiceStub(object):
             channel: A grpc.Channel.
         """
         self.GetMeasure = channel.unary_unary(
-                '/ttf_sensor_api.TTFSensorService/GetMeasure',
-                request_serializer=ttf__sensor__api__pb2.Measure.SerializeToString,
+                '/ttf_sensor_api.TTFSensor/GetMeasure',
+                request_serializer=ttf__sensor__api__pb2.MeasureRequest.SerializeToString,
                 response_deserializer=ttf__sensor__api__pb2.MeasureResponse.FromString,
                 _registered_method=True)
 
 
-class TTFSensorServiceServicer(object):
+class TTFSensorServicer(object):
     """The DigitalSensor service definition
     """
 
@@ -59,22 +59,22 @@ class TTFSensorServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
 
-def add_TTFSensorServiceServicer_to_server(servicer, server):
+def add_TTFSensorServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'GetMeasure': grpc.unary_unary_rpc_method_handler(
                     servicer.GetMeasure,
-                    request_deserializer=ttf__sensor__api__pb2.Measure.FromString,
+                    request_deserializer=ttf__sensor__api__pb2.MeasureRequest.FromString,
                     response_serializer=ttf__sensor__api__pb2.MeasureResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'ttf_sensor_api.TTFSensorService', rpc_method_handlers)
+            'ttf_sensor_api.TTFSensor', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('ttf_sensor_api.TTFSensorService', rpc_method_handlers)
+    server.add_registered_method_handlers('ttf_sensor_api.TTFSensor', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
-class TTFSensorService(object):
+class TTFSensor(object):
     """The DigitalSensor service definition
     """
 
@@ -92,8 +92,8 @@ class TTFSensorService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/ttf_sensor_api.TTFSensorService/GetMeasure',
-            ttf__sensor__api__pb2.Measure.SerializeToString,
+            '/ttf_sensor_api.TTFSensor/GetMeasure',
+            ttf__sensor__api__pb2.MeasureRequest.SerializeToString,
             ttf__sensor__api__pb2.MeasureResponse.FromString,
             options,
             channel_credentials,

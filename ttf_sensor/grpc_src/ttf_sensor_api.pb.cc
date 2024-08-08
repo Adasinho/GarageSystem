@@ -24,7 +24,7 @@ namespace ttf_sensor_api {
 
 inline constexpr MeasureResponse::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
-      : success_{false},
+      : distance_{0},
         _cached_size_{0} {}
 
 template <typename>
@@ -41,41 +41,40 @@ struct MeasureResponseDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MeasureResponseDefaultTypeInternal _MeasureResponse_default_instance_;
 
-inline constexpr Measure::Impl_::Impl_(
+inline constexpr MeasureRequest::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
-      : distance_{0},
+      : id_{static_cast< ::ttf_sensor_api::TTFSensorId >(0)},
         _cached_size_{0} {}
 
 template <typename>
-PROTOBUF_CONSTEXPR Measure::Measure(::_pbi::ConstantInitialized)
+PROTOBUF_CONSTEXPR MeasureRequest::MeasureRequest(::_pbi::ConstantInitialized)
     : _impl_(::_pbi::ConstantInitialized()) {}
-struct MeasureDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR MeasureDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~MeasureDefaultTypeInternal() {}
+struct MeasureRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR MeasureRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~MeasureRequestDefaultTypeInternal() {}
   union {
-    Measure _instance;
+    MeasureRequest _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MeasureDefaultTypeInternal _Measure_default_instance_;
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MeasureRequestDefaultTypeInternal _MeasureRequest_default_instance_;
 }  // namespace ttf_sensor_api
 static ::_pb::Metadata file_level_metadata_ttf_5fsensor_5fapi_2eproto[2];
-static constexpr const ::_pb::EnumDescriptor**
-    file_level_enum_descriptors_ttf_5fsensor_5fapi_2eproto = nullptr;
+static const ::_pb::EnumDescriptor* file_level_enum_descriptors_ttf_5fsensor_5fapi_2eproto[1];
 static constexpr const ::_pb::ServiceDescriptor**
     file_level_service_descriptors_ttf_5fsensor_5fapi_2eproto = nullptr;
 const ::uint32_t TableStruct_ttf_5fsensor_5fapi_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
     protodesc_cold) = {
     ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::ttf_sensor_api::Measure, _internal_metadata_),
+    PROTOBUF_FIELD_OFFSET(::ttf_sensor_api::MeasureRequest, _internal_metadata_),
     ~0u,  // no _extensions_
     ~0u,  // no _oneof_case_
     ~0u,  // no _weak_field_map_
     ~0u,  // no _inlined_string_donated_
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::ttf_sensor_api::Measure, _impl_.distance_),
+    PROTOBUF_FIELD_OFFSET(::ttf_sensor_api::MeasureRequest, _impl_.id_),
     ~0u,  // no _has_bits_
     PROTOBUF_FIELD_OFFSET(::ttf_sensor_api::MeasureResponse, _internal_metadata_),
     ~0u,  // no _extensions_
@@ -84,32 +83,37 @@ const ::uint32_t TableStruct_ttf_5fsensor_5fapi_2eproto::offsets[] PROTOBUF_SECT
     ~0u,  // no _inlined_string_donated_
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::ttf_sensor_api::MeasureResponse, _impl_.success_),
+    PROTOBUF_FIELD_OFFSET(::ttf_sensor_api::MeasureResponse, _impl_.distance_),
 };
 
 static const ::_pbi::MigrationSchema
     schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-        {0, -1, -1, sizeof(::ttf_sensor_api::Measure)},
+        {0, -1, -1, sizeof(::ttf_sensor_api::MeasureRequest)},
         {9, -1, -1, sizeof(::ttf_sensor_api::MeasureResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
-    &::ttf_sensor_api::_Measure_default_instance_._instance,
+    &::ttf_sensor_api::_MeasureRequest_default_instance_._instance,
     &::ttf_sensor_api::_MeasureResponse_default_instance_._instance,
 };
 const char descriptor_table_protodef_ttf_5fsensor_5fapi_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-    "\n\024ttf_sensor_api.proto\022\016ttf_sensor_api\"\033"
-    "\n\007Measure\022\020\n\010distance\030\001 \001(\005\"\"\n\017MeasureRe"
-    "sponse\022\017\n\007success\030\001 \001(\0102\\\n\020TTFSensorServ"
-    "ice\022H\n\nGetMeasure\022\027.ttf_sensor_api.Measu"
-    "re\032\037.ttf_sensor_api.MeasureResponse\"\000b\006p"
-    "roto3"
+    "\n\024ttf_sensor_api.proto\022\016ttf_sensor_api\"9"
+    "\n\016MeasureRequest\022\'\n\002id\030\001 \001(\0162\033.ttf_senso"
+    "r_api.TTFSensorId\"#\n\017MeasureResponse\022\020\n\010"
+    "distance\030\001 \001(\005*\262\001\n\013TTFSensorId\022\031\n\025UNKNOW"
+    "N_TTF_SENSOR_ID\020\000\022 \n\034GATE_A_PARKING_TTF_"
+    "SENSOR_ID\020\001\022!\n\035GATE_A_POSITION_TTF_SENSO"
+    "R_ID\020\002\022 \n\034GATE_B_PARKING_TTF_SENSOR_ID\020\003"
+    "\022!\n\035GATE_B_POSITION_TTF_SENSOR_ID\020\0042\\\n\tT"
+    "TFSensor\022O\n\nGetMeasure\022\036.ttf_sensor_api."
+    "MeasureRequest\032\037.ttf_sensor_api.MeasureR"
+    "esponse\"\000b\006proto3"
 };
 static ::absl::once_flag descriptor_table_ttf_5fsensor_5fapi_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_ttf_5fsensor_5fapi_2eproto = {
     false,
     false,
-    205,
+    417,
     descriptor_table_protodef_ttf_5fsensor_5fapi_2eproto,
     "ttf_sensor_api.proto",
     &descriptor_table_ttf_5fsensor_5fapi_2eproto_once,
@@ -142,53 +146,62 @@ PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_ttf_5fse
 PROTOBUF_ATTRIBUTE_INIT_PRIORITY2
 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_ttf_5fsensor_5fapi_2eproto(&descriptor_table_ttf_5fsensor_5fapi_2eproto);
 namespace ttf_sensor_api {
+const ::google::protobuf::EnumDescriptor* TTFSensorId_descriptor() {
+  ::google::protobuf::internal::AssignDescriptors(&descriptor_table_ttf_5fsensor_5fapi_2eproto);
+  return file_level_enum_descriptors_ttf_5fsensor_5fapi_2eproto[0];
+}
+PROTOBUF_CONSTINIT const uint32_t TTFSensorId_internal_data_[] = {
+    327680u, 0u, };
+bool TTFSensorId_IsValid(int value) {
+  return 0 <= value && value <= 4;
+}
 // ===================================================================
 
-class Measure::_Internal {
+class MeasureRequest::_Internal {
  public:
 };
 
-Measure::Measure(::google::protobuf::Arena* arena)
+MeasureRequest::MeasureRequest(::google::protobuf::Arena* arena)
     : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:ttf_sensor_api.Measure)
+  // @@protoc_insertion_point(arena_constructor:ttf_sensor_api.MeasureRequest)
 }
-Measure::Measure(
-    ::google::protobuf::Arena* arena, const Measure& from)
-    : Measure(arena) {
+MeasureRequest::MeasureRequest(
+    ::google::protobuf::Arena* arena, const MeasureRequest& from)
+    : MeasureRequest(arena) {
   MergeFrom(from);
 }
-inline PROTOBUF_NDEBUG_INLINE Measure::Impl_::Impl_(
+inline PROTOBUF_NDEBUG_INLINE MeasureRequest::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
       : _cached_size_{0} {}
 
-inline void Measure::SharedCtor(::_pb::Arena* arena) {
+inline void MeasureRequest::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
-  _impl_.distance_ = {};
+  _impl_.id_ = {};
 }
-Measure::~Measure() {
-  // @@protoc_insertion_point(destructor:ttf_sensor_api.Measure)
+MeasureRequest::~MeasureRequest() {
+  // @@protoc_insertion_point(destructor:ttf_sensor_api.MeasureRequest)
   _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-inline void Measure::SharedDtor() {
+inline void MeasureRequest::SharedDtor() {
   ABSL_DCHECK(GetArena() == nullptr);
   _impl_.~Impl_();
 }
 
-PROTOBUF_NOINLINE void Measure::Clear() {
-// @@protoc_insertion_point(message_clear_start:ttf_sensor_api.Measure)
+PROTOBUF_NOINLINE void MeasureRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:ttf_sensor_api.MeasureRequest)
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.distance_ = 0;
+  _impl_.id_ = 0;
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* Measure::_InternalParse(
+const char* MeasureRequest::_InternalParse(
     const char* ptr, ::_pbi::ParseContext* ctx) {
   ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
@@ -196,7 +209,7 @@ const char* Measure::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 0, 0, 2> Measure::_table_ = {
+const ::_pbi::TcParseTable<0, 1, 0, 0, 2> MeasureRequest::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
@@ -207,36 +220,36 @@ const ::_pbi::TcParseTable<0, 1, 0, 0, 2> Measure::_table_ = {
     1,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_Measure_default_instance_._instance,
+    &_MeasureRequest_default_instance_._instance,
     ::_pbi::TcParser::GenericFallback,  // fallback
   }, {{
-    // int32 distance = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(Measure, _impl_.distance_), 63>(),
-     {8, 63, 0, PROTOBUF_FIELD_OFFSET(Measure, _impl_.distance_)}},
+    // .ttf_sensor_api.TTFSensorId id = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(MeasureRequest, _impl_.id_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(MeasureRequest, _impl_.id_)}},
   }}, {{
     65535, 65535
   }}, {{
-    // int32 distance = 1;
-    {PROTOBUF_FIELD_OFFSET(Measure, _impl_.distance_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
+    // .ttf_sensor_api.TTFSensorId id = 1;
+    {PROTOBUF_FIELD_OFFSET(MeasureRequest, _impl_.id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
   }},
   // no aux_entries
   {{
   }},
 };
 
-::uint8_t* Measure::_InternalSerialize(
+::uint8_t* MeasureRequest::_InternalSerialize(
     ::uint8_t* target,
     ::google::protobuf::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:ttf_sensor_api.Measure)
+  // @@protoc_insertion_point(serialize_to_array_start:ttf_sensor_api.MeasureRequest)
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
-  // int32 distance = 1;
-  if (this->_internal_distance() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::
-        WriteInt32ToArrayWithField<1>(
-            stream, this->_internal_distance(), target);
+  // .ttf_sensor_api.TTFSensorId id = 1;
+  if (this->_internal_id() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
+        1, this->_internal_id(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -244,70 +257,70 @@ const ::_pbi::TcParseTable<0, 1, 0, 0, 2> Measure::_table_ = {
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
             _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:ttf_sensor_api.Measure)
+  // @@protoc_insertion_point(serialize_to_array_end:ttf_sensor_api.MeasureRequest)
   return target;
 }
 
-::size_t Measure::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:ttf_sensor_api.Measure)
+::size_t MeasureRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:ttf_sensor_api.MeasureRequest)
   ::size_t total_size = 0;
 
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // int32 distance = 1;
-  if (this->_internal_distance() != 0) {
-    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
-        this->_internal_distance());
+  // .ttf_sensor_api.TTFSensorId id = 1;
+  if (this->_internal_id() != 0) {
+    total_size += 1 +
+                  ::_pbi::WireFormatLite::EnumSize(this->_internal_id());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData Measure::_class_data_ = {
-    Measure::MergeImpl,
+const ::google::protobuf::Message::ClassData MeasureRequest::_class_data_ = {
+    MeasureRequest::MergeImpl,
     nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData* Measure::GetClassData() const {
+const ::google::protobuf::Message::ClassData* MeasureRequest::GetClassData() const {
   return &_class_data_;
 }
 
-void Measure::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
-  auto* const _this = static_cast<Measure*>(&to_msg);
-  auto& from = static_cast<const Measure&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:ttf_sensor_api.Measure)
+void MeasureRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<MeasureRequest*>(&to_msg);
+  auto& from = static_cast<const MeasureRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:ttf_sensor_api.MeasureRequest)
   ABSL_DCHECK_NE(&from, _this);
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_distance() != 0) {
-    _this->_internal_set_distance(from._internal_distance());
+  if (from._internal_id() != 0) {
+    _this->_internal_set_id(from._internal_id());
   }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void Measure::CopyFrom(const Measure& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:ttf_sensor_api.Measure)
+void MeasureRequest::CopyFrom(const MeasureRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:ttf_sensor_api.MeasureRequest)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool Measure::IsInitialized() const {
+PROTOBUF_NOINLINE bool MeasureRequest::IsInitialized() const {
   return true;
 }
 
-::_pbi::CachedSize* Measure::AccessCachedSize() const {
+::_pbi::CachedSize* MeasureRequest::AccessCachedSize() const {
   return &_impl_._cached_size_;
 }
-void Measure::InternalSwap(Measure* PROTOBUF_RESTRICT other) {
+void MeasureRequest::InternalSwap(MeasureRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-        swap(_impl_.distance_, other->_impl_.distance_);
+  swap(_impl_.id_, other->_impl_.id_);
 }
 
-::google::protobuf::Metadata Measure::GetMetadata() const {
+::google::protobuf::Metadata MeasureRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ttf_5fsensor_5fapi_2eproto_getter, &descriptor_table_ttf_5fsensor_5fapi_2eproto_once,
       file_level_metadata_ttf_5fsensor_5fapi_2eproto[0]);
@@ -335,7 +348,7 @@ inline PROTOBUF_NDEBUG_INLINE MeasureResponse::Impl_::Impl_(
 
 inline void MeasureResponse::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
-  _impl_.success_ = {};
+  _impl_.distance_ = {};
 }
 MeasureResponse::~MeasureResponse() {
   // @@protoc_insertion_point(destructor:ttf_sensor_api.MeasureResponse)
@@ -354,7 +367,7 @@ PROTOBUF_NOINLINE void MeasureResponse::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.success_ = false;
+  _impl_.distance_ = 0;
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -380,15 +393,15 @@ const ::_pbi::TcParseTable<0, 1, 0, 0, 2> MeasureResponse::_table_ = {
     &_MeasureResponse_default_instance_._instance,
     ::_pbi::TcParser::GenericFallback,  // fallback
   }, {{
-    // bool success = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(MeasureResponse, _impl_.success_), 63>(),
-     {8, 63, 0, PROTOBUF_FIELD_OFFSET(MeasureResponse, _impl_.success_)}},
+    // int32 distance = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(MeasureResponse, _impl_.distance_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(MeasureResponse, _impl_.distance_)}},
   }}, {{
     65535, 65535
   }}, {{
-    // bool success = 1;
-    {PROTOBUF_FIELD_OFFSET(MeasureResponse, _impl_.success_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
+    // int32 distance = 1;
+    {PROTOBUF_FIELD_OFFSET(MeasureResponse, _impl_.distance_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
   }},
   // no aux_entries
   {{
@@ -402,11 +415,11 @@ const ::_pbi::TcParseTable<0, 1, 0, 0, 2> MeasureResponse::_table_ = {
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
-  // bool success = 1;
-  if (this->_internal_success() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteBoolToArray(
-        1, this->_internal_success(), target);
+  // int32 distance = 1;
+  if (this->_internal_distance() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::
+        WriteInt32ToArrayWithField<1>(
+            stream, this->_internal_distance(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -426,9 +439,10 @@ const ::_pbi::TcParseTable<0, 1, 0, 0, 2> MeasureResponse::_table_ = {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // bool success = 1;
-  if (this->_internal_success() != 0) {
-    total_size += 2;
+  // int32 distance = 1;
+  if (this->_internal_distance() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+        this->_internal_distance());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
@@ -450,8 +464,8 @@ void MeasureResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::goo
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_success() != 0) {
-    _this->_internal_set_success(from._internal_success());
+  if (from._internal_distance() != 0) {
+    _this->_internal_set_distance(from._internal_distance());
   }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -473,7 +487,7 @@ PROTOBUF_NOINLINE bool MeasureResponse::IsInitialized() const {
 void MeasureResponse::InternalSwap(MeasureResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-        swap(_impl_.success_, other->_impl_.success_);
+        swap(_impl_.distance_, other->_impl_.distance_);
 }
 
 ::google::protobuf::Metadata MeasureResponse::GetMetadata() const {

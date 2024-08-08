@@ -14,7 +14,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x18\x64igital_sensor_api.proto\x12\x12\x64igital_sensor_api\"9\n\rStatusRequest\x12(\n\x02id\x18\x01 \x01(\x0e\x32\x1c.digital_sensor_api.SensorId\"!\n\x0eStatusResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08*>\n\x08SensorId\x12\x15\n\x11UNKNOWN_SENSOR_ID\x10\x00\x12\x1b\n\x17GATE_PRESENCE_SENSOR_ID\x10\x01\x32l\n\x14\x44igitalSensorService\x12T\n\tGetStatus\x12!.digital_sensor_api.StatusRequest\x1a\".digital_sensor_api.StatusResponse\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x18\x64igital_sensor_api.proto\x12\x12\x64igital_sensor_api\"9\n\rStatusRequest\x12(\n\x02id\x18\x01 \x01(\x0e\x32\x1c.digital_sensor_api.SensorId\"!\n\x0eStatusResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08*>\n\x08SensorId\x12\x15\n\x11UNKNOWN_SENSOR_ID\x10\x00\x12\x1b\n\x17GATE_PRESENCE_SENSOR_ID\x10\x01\x32\x65\n\rDigitalSensor\x12T\n\tGetStatus\x12!.digital_sensor_api.StatusRequest\x1a\".digital_sensor_api.StatusResponse\"\x00\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -27,6 +27,6 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_STATUSREQUEST']._serialized_end=105
   _globals['_STATUSRESPONSE']._serialized_start=107
   _globals['_STATUSRESPONSE']._serialized_end=140
-  _globals['_DIGITALSENSORSERVICE']._serialized_start=206
-  _globals['_DIGITALSENSORSERVICE']._serialized_end=314
+  _globals['_DIGITALSENSOR']._serialized_start=206
+  _globals['_DIGITALSENSOR']._serialized_end=307
 # @@protoc_insertion_point(module_scope)

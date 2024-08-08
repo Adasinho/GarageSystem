@@ -6,19 +6,8 @@ include(/home/adasinho/Adasinho/vcpkg/scripts/buildsystems/vcpkg.cmake)
 set(CMAKE_TOOLCHAIN_FILE "/home/adasinho/Adasinho/vcpkg/scripts/buildsystems/vcpkg.cmake")
 set(CMAKE_PREFIX_PATH "/home/adasinho/Adasinho/vcpkg/packages/grpc_arm64-linux/share/grpc/")
 
-
-#include("/home/adasinho/Adasinho/vcpkg/packages/grpc_arm64-linux/share/grpc/gRPCConfig.cmake")
-#set(openssl_DIR "/home/adasinho/Adasinho/vcpkg/packages/openssl_arm64-linux/share/openssl/")
-#set(re2_DIR "/home/adasinho/Adasinho/vcpkg/packages/re2_arm64-linux/share/re2/")
-#set(gRPC_DIR "/home/adasinho/Adasinho/vcpkg/packages/grpc_arm64-linux/share/grpc/")
-#set(Protobuf_DIR "/home/adasinho/Adasinho/vcpkg/packages/protobuf_arm64-linux/share/protobuf/")
-#set(upb_DIR "/home/adasinho/Adasinho/vcpkg/packages/upb_arm64-linux/share/upb/")
-#set(utf8_range_DIR "/home/adasinho/Adasinho/vcpkg/packages/utf8-range_arm64-linux/share/utf8_range/")
-#set(absl_DIR "/home/adasinho/Adasinho/vcpkg/packages/abseil_arm64-linux/share/absl/")
-
-# Znajdź lokalną instalację gRPC
+# Znajdź lokalną instalację gRPC oraz jego zależne biblioteki
 find_package(gRPC CONFIG REQUIRED)
-
 if(gRPC_FOUND)
     message("gRPC FOUNDED")
 
@@ -36,7 +25,6 @@ if(gRPC_FOUND)
 endif()
 
 find_package(absl REQUIRED)
-
 if(absl_FOUND)
     message("absl FOUNDED")
 
@@ -69,12 +57,34 @@ if(Protobuf_FOUND)
     list(APPEND CMAKE_LIBRARY_PATH ${Protobuf_LIBRARIES})
 endif()
 
-# ustaw ścieżkę do wygenerowanych plików
-message("SOURCE DIR: ${CMAKE_SOURCE_DIR}")
-#include_directories("${CMAKE_SOURCE_DIR}/grpc_src")
+# Inne zależności
+find_package(nlohmann_json CONFIG REQUIRED)
+if(nlohmann_json_FOUND)
+    message(nlohmann_json FOUNDED)
 
-# Dodaj plik źródłowy serwera
-#add_executable(ttf_sensor_server main.cpp)
+    set(nlohmann_json_DIR "/home/adasinho/Adasinho/vcpkg/packages/nlohmann-json_arm64-linux/share/nlohmann_json/")
+    set(nlohmann_json_INCLUDE_DIRS "/home/adasinho/Adasinho/vcpkg/packages/nlohmann-json_arm64-linux/include/")
+
+    include_directories(${nlohmann_json_INCLUDE_DIRS})
+
+    message(STATUS "nlohmann_json_INCLUDE_DIRS: ${nlohmann_json_INCLUDE_DIRS}")
+endif()
+
+# Dodaj pliki źródłowe .hpp do projektu
+include_directories(${CMAKE_SOURCE_DIR}/include)
+
+# Zbierz pliki źródłowe .cpp
+file(GLOB_RECURSE SOURCES "src/*.cpp")
+
+# Dodaj wygenerowane pliki GRPC .pb.h oraz .grpc.pb.h do projektu
+include_directories(${CMAKE_SOURCE_DIR}/grpc_src)
+
+# Zbierz wygenerowane pliki .pb.cc i .grpc.pb.cc
+file(GLOB_RECURSE PROTO_SOURCES "grpc_src/*.pb.cc" "grpc_src/*.grpc.pb.cc")
+
+# Utwórz plik wykonywalny
+add_executable(ttf_sensor_server main.cpp ${PROTO_SOURCES} ${SOURCES})
+
 
 # Dodaj ścieżki do bibliotek gRPC do zmiennej środowiskowej LD_LIBRARY_PATH (Linux/macOS)
 # lub PATH (Windows) podczas uruchamiania
@@ -82,19 +92,8 @@ if(UNIX)
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-rpath,${gRPC_LIBRARY_DIRS}")
 endif()
 
-# Dodaj wygenerowane pliki .pb.cc i .grpc.pb.cc do projektu
-file(GLOB_RECURSE PROTO_SOURCES "grpc_src/*.pb.cc" "grpc_src/*.grpc.pb.cc")
-add_executable(ttf_sensor_server main.cpp ${PROTO_SOURCES})
-
-# Ustaw ścieżki do bibliotek
-### file(GLOB GRPC_LIBS "/home/adasinho/Adasinho/vcpkg/packages/grpc_arm64-linux/lib/*.a")
-### file(GLOB ABSL_LIBS "/home/adasinho/Adasinho/vcpkg/packages/abseil_arm64-linux/lib/*.a")
-
 # Połącz z bibliotekami gRPC
 target_link_libraries(ttf_sensor_server PRIVATE gRPC::grpc++)
-#target_link_libraries(ttf_sensor_server /home/adasinho/Adasinho/vcpkg/packages/grpc_arm64-linux/lib/)
-
-message(STATUS "CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}")
 
 
 

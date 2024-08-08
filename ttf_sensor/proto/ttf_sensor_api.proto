@@ -2,18 +2,26 @@ syntax = "proto3";
 
 package ttf_sensor_api;
 
+enum TTFSensorId {
+    UNKNOWN_TTF_SENSOR_ID = 0;
+    GATE_A_PARKING_TTF_SENSOR_ID = 1;
+    GATE_A_POSITION_TTF_SENSOR_ID = 2;
+    GATE_B_PARKING_TTF_SENSOR_ID = 3;
+    GATE_B_POSITION_TTF_SENSOR_ID = 4;
+}
+
 // The DigitalSensor service definition
-service TTFSensorService {
+service TTFSensor {
     // Get sensor status
-    rpc GetMeasure (Measure) returns (MeasureResponse) {}
+    rpc GetMeasure (MeasureRequest) returns (MeasureResponse) {}
 }
 
 // The request message containing detect status
-message Measure {
-    int32 distance = 1;
+message MeasureRequest {
+    TTFSensorId id = 1;
 }
 
 // The response message containing success status
 message MeasureResponse {
-    bool success = 1;
+    int32 distance = 1;
 }

@@ -33,6 +33,7 @@
 #include "google/protobuf/message.h"
 #include "google/protobuf/repeated_field.h"  // IWYU pragma: export
 #include "google/protobuf/extension_set.h"  // IWYU pragma: export
+#include "google/protobuf/generated_enum_reflection.h"
 #include "google/protobuf/unknown_field_set.h"
 // @@protoc_insertion_point(includes)
 
@@ -56,9 +57,9 @@ struct TableStruct_ttf_5fsensor_5fapi_2eproto {
 extern const ::google::protobuf::internal::DescriptorTable
     descriptor_table_ttf_5fsensor_5fapi_2eproto;
 namespace ttf_sensor_api {
-class Measure;
-struct MeasureDefaultTypeInternal;
-extern MeasureDefaultTypeInternal _Measure_default_instance_;
+class MeasureRequest;
+struct MeasureRequestDefaultTypeInternal;
+extern MeasureRequestDefaultTypeInternal _MeasureRequest_default_instance_;
 class MeasureResponse;
 struct MeasureResponseDefaultTypeInternal;
 extern MeasureResponseDefaultTypeInternal _MeasureResponse_default_instance_;
@@ -69,6 +70,42 @@ namespace protobuf {
 }  // namespace google
 
 namespace ttf_sensor_api {
+enum TTFSensorId : int {
+  UNKNOWN_TTF_SENSOR_ID = 0,
+  GATE_A_PARKING_TTF_SENSOR_ID = 1,
+  GATE_A_POSITION_TTF_SENSOR_ID = 2,
+  GATE_B_PARKING_TTF_SENSOR_ID = 3,
+  GATE_B_POSITION_TTF_SENSOR_ID = 4,
+  TTFSensorId_INT_MIN_SENTINEL_DO_NOT_USE_ =
+      std::numeric_limits<::int32_t>::min(),
+  TTFSensorId_INT_MAX_SENTINEL_DO_NOT_USE_ =
+      std::numeric_limits<::int32_t>::max(),
+};
+
+bool TTFSensorId_IsValid(int value);
+extern const uint32_t TTFSensorId_internal_data_[];
+constexpr TTFSensorId TTFSensorId_MIN = static_cast<TTFSensorId>(0);
+constexpr TTFSensorId TTFSensorId_MAX = static_cast<TTFSensorId>(4);
+constexpr int TTFSensorId_ARRAYSIZE = 4 + 1;
+const ::google::protobuf::EnumDescriptor*
+TTFSensorId_descriptor();
+template <typename T>
+const std::string& TTFSensorId_Name(T value) {
+  static_assert(std::is_same<T, TTFSensorId>::value ||
+                    std::is_integral<T>::value,
+                "Incorrect type passed to TTFSensorId_Name().");
+  return TTFSensorId_Name(static_cast<TTFSensorId>(value));
+}
+template <>
+inline const std::string& TTFSensorId_Name(TTFSensorId value) {
+  return ::google::protobuf::internal::NameOfDenseEnum<TTFSensorId_descriptor,
+                                                 0, 4>(
+      static_cast<int>(value));
+}
+inline bool TTFSensorId_Parse(absl::string_view name, TTFSensorId* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<TTFSensorId>(
+      TTFSensorId_descriptor(), name, value);
+}
 
 // ===================================================================
 
@@ -207,16 +244,16 @@ class MeasureResponse final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kSuccessFieldNumber = 1,
+    kDistanceFieldNumber = 1,
   };
-  // bool success = 1;
-  void clear_success() ;
-  bool success() const;
-  void set_success(bool value);
+  // int32 distance = 1;
+  void clear_distance() ;
+  ::int32_t distance() const;
+  void set_distance(::int32_t value);
 
   private:
-  bool _internal_success() const;
-  void _internal_set_success(bool value);
+  ::int32_t _internal_distance() const;
+  void _internal_set_distance(::int32_t value);
 
   public:
   // @@protoc_insertion_point(class_scope:ttf_sensor_api.MeasureResponse)
@@ -242,7 +279,7 @@ class MeasureResponse final :
                               ::google::protobuf::Arena* arena);
         inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
                               ::google::protobuf::Arena* arena, const Impl_& from);
-    bool success_;
+    ::int32_t distance_;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -250,26 +287,26 @@ class MeasureResponse final :
   friend struct ::TableStruct_ttf_5fsensor_5fapi_2eproto;
 };// -------------------------------------------------------------------
 
-class Measure final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:ttf_sensor_api.Measure) */ {
+class MeasureRequest final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:ttf_sensor_api.MeasureRequest) */ {
  public:
-  inline Measure() : Measure(nullptr) {}
-  ~Measure() override;
+  inline MeasureRequest() : MeasureRequest(nullptr) {}
+  ~MeasureRequest() override;
   template<typename = void>
-  explicit PROTOBUF_CONSTEXPR Measure(::google::protobuf::internal::ConstantInitialized);
+  explicit PROTOBUF_CONSTEXPR MeasureRequest(::google::protobuf::internal::ConstantInitialized);
 
-  inline Measure(const Measure& from)
-      : Measure(nullptr, from) {}
-  Measure(Measure&& from) noexcept
-    : Measure() {
+  inline MeasureRequest(const MeasureRequest& from)
+      : MeasureRequest(nullptr, from) {}
+  MeasureRequest(MeasureRequest&& from) noexcept
+    : MeasureRequest() {
     *this = ::std::move(from);
   }
 
-  inline Measure& operator=(const Measure& from) {
+  inline MeasureRequest& operator=(const MeasureRequest& from) {
     CopyFrom(from);
     return *this;
   }
-  inline Measure& operator=(Measure&& from) noexcept {
+  inline MeasureRequest& operator=(MeasureRequest&& from) noexcept {
     if (this == &from) return *this;
     if (GetArena() == from.GetArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -301,20 +338,20 @@ class Measure final :
   static const ::google::protobuf::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const Measure& default_instance() {
+  static const MeasureRequest& default_instance() {
     return *internal_default_instance();
   }
-  static inline const Measure* internal_default_instance() {
-    return reinterpret_cast<const Measure*>(
-               &_Measure_default_instance_);
+  static inline const MeasureRequest* internal_default_instance() {
+    return reinterpret_cast<const MeasureRequest*>(
+               &_MeasureRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     0;
 
-  friend void swap(Measure& a, Measure& b) {
+  friend void swap(MeasureRequest& a, MeasureRequest& b) {
     a.Swap(&b);
   }
-  inline void Swap(Measure* other) {
+  inline void Swap(MeasureRequest* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetArena() != nullptr &&
@@ -327,7 +364,7 @@ class Measure final :
       ::google::protobuf::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(Measure* other) {
+  void UnsafeArenaSwap(MeasureRequest* other) {
     if (other == this) return;
     ABSL_DCHECK(GetArena() == other->GetArena());
     InternalSwap(other);
@@ -335,14 +372,14 @@ class Measure final :
 
   // implements Message ----------------------------------------------
 
-  Measure* New(::google::protobuf::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<Measure>(arena);
+  MeasureRequest* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<MeasureRequest>(arena);
   }
   using ::google::protobuf::Message::CopyFrom;
-  void CopyFrom(const Measure& from);
+  void CopyFrom(const MeasureRequest& from);
   using ::google::protobuf::Message::MergeFrom;
-  void MergeFrom( const Measure& from) {
-    Measure::MergeImpl(*this, from);
+  void MergeFrom( const MeasureRequest& from) {
+    MeasureRequest::MergeImpl(*this, from);
   }
   private:
   static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
@@ -360,16 +397,16 @@ class Measure final :
   ::google::protobuf::internal::CachedSize* AccessCachedSize() const final;
   void SharedCtor(::google::protobuf::Arena* arena);
   void SharedDtor();
-  void InternalSwap(Measure* other);
+  void InternalSwap(MeasureRequest* other);
 
   private:
   friend class ::google::protobuf::internal::AnyMetadata;
   static ::absl::string_view FullMessageName() {
-    return "ttf_sensor_api.Measure";
+    return "ttf_sensor_api.MeasureRequest";
   }
   protected:
-  explicit Measure(::google::protobuf::Arena* arena);
-  Measure(::google::protobuf::Arena* arena, const Measure& from);
+  explicit MeasureRequest(::google::protobuf::Arena* arena);
+  MeasureRequest(::google::protobuf::Arena* arena, const MeasureRequest& from);
   public:
 
   static const ClassData _class_data_;
@@ -382,19 +419,19 @@ class Measure final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kDistanceFieldNumber = 1,
+    kIdFieldNumber = 1,
   };
-  // int32 distance = 1;
-  void clear_distance() ;
-  ::int32_t distance() const;
-  void set_distance(::int32_t value);
+  // .ttf_sensor_api.TTFSensorId id = 1;
+  void clear_id() ;
+  ::ttf_sensor_api::TTFSensorId id() const;
+  void set_id(::ttf_sensor_api::TTFSensorId value);
 
   private:
-  ::int32_t _internal_distance() const;
-  void _internal_set_distance(::int32_t value);
+  ::ttf_sensor_api::TTFSensorId _internal_id() const;
+  void _internal_set_id(::ttf_sensor_api::TTFSensorId value);
 
   public:
-  // @@protoc_insertion_point(class_scope:ttf_sensor_api.Measure)
+  // @@protoc_insertion_point(class_scope:ttf_sensor_api.MeasureRequest)
  private:
   class _Internal;
 
@@ -417,7 +454,7 @@ class Measure final :
                               ::google::protobuf::Arena* arena);
         inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
                               ::google::protobuf::Arena* arena, const Impl_& from);
-    ::int32_t distance_;
+    int id_;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -439,56 +476,56 @@ class Measure final :
 #endif  // __GNUC__
 // -------------------------------------------------------------------
 
-// Measure
+// MeasureRequest
 
-// int32 distance = 1;
-inline void Measure::clear_distance() {
+// .ttf_sensor_api.TTFSensorId id = 1;
+inline void MeasureRequest::clear_id() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_.distance_ = 0;
+  _impl_.id_ = 0;
 }
-inline ::int32_t Measure::distance() const {
-  // @@protoc_insertion_point(field_get:ttf_sensor_api.Measure.distance)
-  return _internal_distance();
+inline ::ttf_sensor_api::TTFSensorId MeasureRequest::id() const {
+  // @@protoc_insertion_point(field_get:ttf_sensor_api.MeasureRequest.id)
+  return _internal_id();
 }
-inline void Measure::set_distance(::int32_t value) {
-  _internal_set_distance(value);
-  // @@protoc_insertion_point(field_set:ttf_sensor_api.Measure.distance)
+inline void MeasureRequest::set_id(::ttf_sensor_api::TTFSensorId value) {
+  _internal_set_id(value);
+  // @@protoc_insertion_point(field_set:ttf_sensor_api.MeasureRequest.id)
 }
-inline ::int32_t Measure::_internal_distance() const {
+inline ::ttf_sensor_api::TTFSensorId MeasureRequest::_internal_id() const {
   PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
-  return _impl_.distance_;
+  return static_cast<::ttf_sensor_api::TTFSensorId>(_impl_.id_);
 }
-inline void Measure::_internal_set_distance(::int32_t value) {
+inline void MeasureRequest::_internal_set_id(::ttf_sensor_api::TTFSensorId value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
-  _impl_.distance_ = value;
+  _impl_.id_ = value;
 }
 
 // -------------------------------------------------------------------
 
 // MeasureResponse
 
-// bool success = 1;
-inline void MeasureResponse::clear_success() {
+// int32 distance = 1;
+inline void MeasureResponse::clear_distance() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_.success_ = false;
+  _impl_.distance_ = 0;
 }
-inline bool MeasureResponse::success() const {
-  // @@protoc_insertion_point(field_get:ttf_sensor_api.MeasureResponse.success)
-  return _internal_success();
+inline ::int32_t MeasureResponse::distance() const {
+  // @@protoc_insertion_point(field_get:ttf_sensor_api.MeasureResponse.distance)
+  return _internal_distance();
 }
-inline void MeasureResponse::set_success(bool value) {
-  _internal_set_success(value);
-  // @@protoc_insertion_point(field_set:ttf_sensor_api.MeasureResponse.success)
+inline void MeasureResponse::set_distance(::int32_t value) {
+  _internal_set_distance(value);
+  // @@protoc_insertion_point(field_set:ttf_sensor_api.MeasureResponse.distance)
 }
-inline bool MeasureResponse::_internal_success() const {
+inline ::int32_t MeasureResponse::_internal_distance() const {
   PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
-  return _impl_.success_;
+  return _impl_.distance_;
 }
-inline void MeasureResponse::_internal_set_success(bool value) {
+inline void MeasureResponse::_internal_set_distance(::int32_t value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
-  _impl_.success_ = value;
+  _impl_.distance_ = value;
 }
 
 #ifdef __GNUC__
@@ -498,6 +535,19 @@ inline void MeasureResponse::_internal_set_success(bool value) {
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace ttf_sensor_api
 
+
+namespace google {
+namespace protobuf {
+
+template <>
+struct is_proto_enum<::ttf_sensor_api::TTFSensorId> : std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor<::ttf_sensor_api::TTFSensorId>() {
+  return ::ttf_sensor_api::TTFSensorId_descriptor();
+}
+
+}  // namespace protobuf
+}  // namespace google
 
 // @@protoc_insertion_point(global_scope)
 
