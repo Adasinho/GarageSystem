@@ -1,6 +1,6 @@
 #include <string>
 
-#include "TTFSensorServiceImpl.hpp"
+#include "TTFSensorServicer.hpp"
 
 #include <grpcpp/grpcpp.h>
 #include <grpcpp/health_check_service_interface.h>
@@ -17,7 +17,7 @@ class TTFSensorServer
 
     ServerBuilder builder;
     std::unique_ptr<Server> server;
-    TTFSensorServiceImpl service;
+    TTFSensorServicer service;
 
     public:
     TTFSensorServer(std::string ip, std::string port);

@@ -1,6 +1,6 @@
-#include "TTFSensorServiceImpl.hpp"
+#include "TTFSensorServicer.hpp"
 
-Status TTFSensorServiceImpl::GetMeasure(ServerContext *context, const MeasureRequest *request, MeasureResponse *reply)
+Status TTFSensorServicer::GetMeasure(ServerContext *context, const MeasureRequest *request, MeasureResponse *reply)
 {
     TTFSensorId id = request->id();
     std::cout << "Otrzymano żądanie pomiaru dla czujnika: " << id << std::endl;
