@@ -2,6 +2,7 @@
 /digital_sensor/venv
 /digital_sensor/.vscode
 /digital_sensor/__pycache__
+/digital_sensor/grpc_src/__pycache__
 
 # ttf_sensor (C++ project)
 /ttf_sensor/build
@@ -9,5 +10,6 @@
 # core (Python project)
 /core/__pycache__
 /core/venv
+/core/grpc_src/__pycache__
 
 /.vscode
