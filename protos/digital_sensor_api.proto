@@ -4,7 +4,8 @@ package digital_sensor_api;
 
 enum SensorId {
     UNKNOWN_SENSOR_ID = 0;
-    GATE_PRESENCE_SENSOR_ID = 1;
+    GATE_A_PRESENCE_SENSOR_ID = 1;
+    GATE_B_PRESENCE_SENSOR_ID = 2;
 }
 
 // The DigitalSensor service definition

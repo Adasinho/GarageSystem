@@ -7,7 +7,7 @@ class DigitalSensorServicer(digital_sensor_api_pb2_grpc.DigitalSensorServicer):
     def GetStatus(self, request: StatusRequest, context: ServicerContext) -> StatusResponse:
         print(f"Get request for {request.id} sensor")
         
-        success = request.id == SensorId.GATE_PRESENCE_SENSOR_ID
+        success = request.id == SensorId.GATE_A_PRESENCE_SENSOR_ID
         response = StatusResponse(success=success)
         
         return response

@@ -8,9 +8,11 @@ DESCRIPTOR: _descriptor.FileDescriptor
 class SensorId(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     __slots__ = ()
     UNKNOWN_SENSOR_ID: _ClassVar[SensorId]
-    GATE_PRESENCE_SENSOR_ID: _ClassVar[SensorId]
+    GATE_A_PRESENCE_SENSOR_ID: _ClassVar[SensorId]
+    GATE_B_PRESENCE_SENSOR_ID: _ClassVar[SensorId]
 UNKNOWN_SENSOR_ID: SensorId
-GATE_PRESENCE_SENSOR_ID: SensorId
+GATE_A_PRESENCE_SENSOR_ID: SensorId
+GATE_B_PRESENCE_SENSOR_ID: SensorId
 
 class StatusRequest(_message.Message):
     __slots__ = ("id",)

@@ -24,7 +24,7 @@ TFF_SENSOR_SERVER_PORT = data["ttf_sensor_service"]["port"]
 
 def main():
     digital_service_client = DigitalSensorClient(DIGITAL_SENSOR_SERVER_IP, DIGITAL_SENSOR_SERVER_PORT)
-    sensor_status = digital_service_client.get_status(digital_sensor_api_pb2.SensorId.GATE_PRESENCE_SENSOR_ID)
+    sensor_status = digital_service_client.get_status(digital_sensor_api_pb2.SensorId.GATE_A_PRESENCE_SENSOR_ID)
     
     ttf_sensor_client = TTFSensorClient(TTF_SENSOR_SERVER_IP, TFF_SENSOR_SERVER_PORT)
     distance = ttf_sensor_client.get_distance(ttf_sensor_api_pb2.TTFSensorId.GATE_A_PARKING_TTF_SENSOR_ID)
