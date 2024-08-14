@@ -1,3 +1,6 @@
+#ifndef HELPERS_HPP
+#define HELPERS_HPP
+
 #include "ttf_sensor_api.pb.h"
 
 using ttf_sensor_api::TTFSensorId;
@@ -7,3 +10,5 @@ namespace Helpers {
     std::string getTTFSensorIDName(TTFSensorId id);
     bool isCorrectTTFSensorId(TTFSensorId id);
 }
+
+#endif // HELPERS_HPP

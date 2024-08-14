@@ -1,3 +1,6 @@
+#ifndef TTF_SENSOR_SERVER_HPP
+#define TTF_SENSOR_SERVER_HPP
+
 #include <string>
 
 #include <grpcpp/grpcpp.h>
@@ -8,23 +11,27 @@
 using grpc::Server;
 using grpc::ServerBuilder;
 
+//class TTFSensorServicer;
+class ServerConfiguration;
 class TTFSensorsController;
 
 namespace TTFProject {
     class TTFSensorServer
     {
         private:
-        std::string ip;
-        std::string port;
         std::string address;
 
         ServerBuilder builder;
         std::unique_ptr<Server> server;
-        TTFSensorsController* sensorsController;
         std::unique_ptr<TTFSensorServicer> service;
 
+        TTFSensorsController* sensorsController;
+        ServerConfiguration* config;
+
         public:
-        TTFSensorServer(std::string ip, std::string port, TTFSensorsController* sensorsController);
+        TTFSensorServer(ServerConfiguration* config, TTFSensorsController* sensorsController);
         void runServer();
     };
 }
+
+#endif // TTF_SENSOR_SERVER_HPP

@@ -1,17 +1,17 @@
 #include "ServerConfiguration.hpp"
 
-ServerConfiguiration::ServerConfiguiration(json configData)
+ServerConfiguration::ServerConfiguration(json configData)
 {
     this->ip = configData["ttf_sensor_service"]["address_ip"];
     this->port = configData["ttf_sensor_service"]["port"];
 }
 
-std::string ServerConfiguiration::getIP()
+std::string ServerConfiguration::getIP()
 {
     return this->ip;
 }
 
-std::string ServerConfiguiration::getPort()
+std::string ServerConfiguration::getPort()
 {
     return this->port;
 }

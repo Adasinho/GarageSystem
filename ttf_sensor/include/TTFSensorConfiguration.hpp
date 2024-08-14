@@ -1,3 +1,6 @@
+#ifndef TTF_SENSOR_CONFIGURATION_HPP
+#define TTF_SENSOR_CONFIGURATION_HPP
+
 #include <string>
 
 #include "ttf_sensor_api.grpc.pb.h"
@@ -22,3 +25,5 @@ public:
     int getAddress();
     std::string getName();
 };
+
+#endif // TTF_SENSOR_CONFIGURATION_HPP

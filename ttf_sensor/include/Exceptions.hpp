@@ -1,3 +1,6 @@
+#ifndef EXCEPTIONS_HPP
+#define EXCEPTIONS_HPP
+
 #include <exception>
 #include <string>
 
@@ -26,3 +29,5 @@ class TTFSensorConfigurationException : public TTFSensorException
     public:
     TTFSensorConfigurationException(const std::string& message) : TTFSensorException(message) {}
 };
+
+#endif // EXCEPTIONS_HPP

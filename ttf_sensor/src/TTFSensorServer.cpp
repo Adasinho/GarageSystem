@@ -1,11 +1,10 @@
 #include "TTFSensorServer.hpp"
 #include "TTFSensorsController.hpp"
+#include "ServerConfiguration.hpp"
 
-TTFProject::TTFSensorServer::TTFSensorServer(std::string ip, std::string port, TTFSensorsController* sensorsController)
+TTFProject::TTFSensorServer::TTFSensorServer(ServerConfiguration* config, TTFSensorsController* sensorsController)
 {
-    this->ip = ip;
-    this->port = port;
-    this->address = "[" + ip + "]" + ":" + port; // must be different for IPv4 and Ipv6
+    this->address = "[" + config->getIP() + "]" + ":" + config->getPort(); // must be different for IPv4 and Ipv6
 
     grpc::EnableDefaultHealthCheckService(true);
 

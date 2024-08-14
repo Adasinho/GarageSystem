@@ -1,16 +1,21 @@
+#ifndef SERVER_CONFIGURATION_HPP
+#define SERVER_CONFIGURATION_HPP
+
 #include "nlohmann/json.hpp"
 
 using json = nlohmann::json;
 
-class ServerConfiguiration
+class ServerConfiguration
 {
     private:
     std::string ip;
     std::string port;
 
     public:
-    ServerConfiguiration(json configData);
+    ServerConfiguration(json configData);
 
     std::string getIP();
     std::string getPort();
 };
+
+#endif // SERVER_CONFIGURATION_HPP

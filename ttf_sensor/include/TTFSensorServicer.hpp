@@ -1,3 +1,6 @@
+#ifndef TTF_SENSOR_SERVICER_HPP
+#define TTF_SENSOR_SERVICER_HPP
+
 #include <grpcpp/grpcpp.h>
 
 #include "ttf_sensor_api.grpc.pb.h"
@@ -15,3 +18,5 @@ class TTFSensorServicer final : public ttf_sensor_api::TTFSensor::Service {
     Status GetMeasure(ServerContext* context, const MeasureRequest* request,
                          MeasureResponse* reply) override;
 };
+
+#endif // TTF_SENSOR_SERVICER_HPP

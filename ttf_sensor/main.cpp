@@ -19,13 +19,10 @@ int main(int argc, char** argv) {
     }
 
     std::string configFilePath = argv[1];
-    
     nlohmann::json data = Utils::getJsonData(configFilePath);
-    ServerConfiguiration config(data);
-
+    std::unique_ptr<ServerConfiguration> config = std::make_unique<ServerConfiguration>(data);
     std::unique_ptr<TTFSensorsController> sensorsController = std::make_unique<TTFSensorsController>(configFilePath);
-
-    std::unique_ptr<TTFProject::TTFSensorServer> server = std::make_unique<TTFProject::TTFSensorServer>(config.getIP(), config.getPort(), sensorsController.get());
+    std::unique_ptr<TTFProject::TTFSensorServer> server = std::make_unique<TTFProject::TTFSensorServer>(config.get(), sensorsController.get());
     server->runServer();
 
     return 0;
