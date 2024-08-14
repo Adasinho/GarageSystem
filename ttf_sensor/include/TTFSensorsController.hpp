@@ -5,11 +5,11 @@
 #include <vector>
 #include <memory>
 
-#include "TTFSensor.hpp"
+#include "ITTFSensor.hpp"
 
 class TTFSensorsController {
     private:
-    std::vector<std::unique_ptr<TTFSensor>> sensors;
+    std::vector<std::unique_ptr<ITTFSensor>> sensors;
 
     public:
     TTFSensorsController(std::string configFilePath);

@@ -3,12 +3,8 @@
 #include <string>
 
 #include "Utils.hpp"
-
 #include "ServerConfiguration.hpp"
 #include "TTFSensorServer.hpp"
-
-// ???
-//#include "TTFSensorServicer.hpp"
 #include "TTFSensorsController.hpp"
 
 int main(int argc, char** argv) {

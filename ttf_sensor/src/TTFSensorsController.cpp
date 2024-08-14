@@ -6,6 +6,9 @@
 #include "Exceptions.hpp"
 #include "Helpers.hpp"
 
+#include "TTFSensorModel.hpp"
+#include "TTFSensorFactory.hpp"
+
 TTFSensorsController::TTFSensorsController(std::string configFilePath)
 {
     json data = Utils::getJsonData(configFilePath);
@@ -21,7 +24,9 @@ TTFSensorsController::TTFSensorsController(std::string configFilePath)
             float maxRange = std::stof(std::string(data["ttf_sensor_service"][sensorName]["maxRange"]));
             TTFSensorId id = Helpers::getTTFSensorIDFromName(sensorName);
 
-            this->sensors.push_back(std::make_unique<TTFSensor>(pin, shutdownPin, address, id, minRange, maxRange));
+            std::string type = std::string(data["ttf_sensor_service"][sensorName]["type"]);
+            TTFSensorModel sensorModel = Helpers::getTTFSensorModelFromString(type);
+            this->sensors.push_back(TTFSensorFactory::makeTTFSensor(sensorModel, pin, shutdownPin, address, id, minRange, maxRange));
         } catch(const TTFSensorConfigurationException& e) {
             std::cerr << "Can not create TTFSensor: " << e.what() << std::endl;
         } catch(const TTFSensorInicializationException& e) {

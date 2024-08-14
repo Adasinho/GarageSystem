@@ -40,3 +40,9 @@ bool Helpers::isCorrectTTFSensorId(TTFSensorId id)
             return false;
     }
 }
+
+TTFSensorModel Helpers::getTTFSensorModelFromString(std::string model)
+{
+    if(model == "vl53l1x") return TTFSensorModel::TTF_SENSOR_MODEL_VL53L1X;
+    else return TTFSensorModel::TTF_SENSOR_MODEL_UNKNOWN;
+}

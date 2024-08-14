@@ -13,6 +13,7 @@
         "address_ip": "::",
         "port": "50052",
         "gate_a_parking_ttf_sensor": {
+            "type": "vl53l1x",
             "pin": "12",
             "shutdownPin": "20",
             "address": "0x13",
@@ -20,6 +21,7 @@
             "maxRange": "200"
         },
         "gate_a_position_ttf_sensor": {
+            "type": "vl53l1x",
             "pin": "12",
             "shutdownPin": "21",
             "address": "0x14",
@@ -27,6 +29,7 @@
             "maxRange": "200"
         },
         "gate_b_parking_ttf_sensor": {
+            "type": "vl53l1x",
             "pin": "12",
             "shutdownPin": "22",
             "address": "0x15",
@@ -34,6 +37,7 @@
             "maxRange": "200"
         },
         "gate_b_position_ttf_sensor": {
+            "type": "vl53l1x",
             "pin": "12",
             "shutdownPin": "23",
             "address": "0x16",

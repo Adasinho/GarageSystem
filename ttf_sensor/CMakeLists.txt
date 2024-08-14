@@ -72,6 +72,7 @@ endif()
 
 # Dodaj pliki źródłowe .hpp do projektu
 include_directories(${CMAKE_SOURCE_DIR}/include)
+include_directories(${CMAKE_SOURCE_DIR}/include/interfaces)
 
 # Zbierz pliki źródłowe .cpp
 file(GLOB_RECURSE SOURCES "src/*.cpp")
