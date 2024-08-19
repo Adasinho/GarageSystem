@@ -9,7 +9,7 @@ class VL53L1XSensor : public ITTFSensor {
     //std::unique_ptr<TTFSensorConfiguration> config;
 
     public:
-    VL53L1XSensor(int pin, int shutdownPin, int address, TTFSensorId id, float minRange, float maxRange);
+    VL53L1XSensor(int shutdownPin, int address, TTFSensorId id, float minRange, float maxRange);
     float getDistance();
 };
 

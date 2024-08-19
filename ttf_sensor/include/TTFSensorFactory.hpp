@@ -9,7 +9,7 @@
 class TTFSensorFactory {
     public:
     static std::unique_ptr<ITTFSensor> makeTTFSensor(
-        TTFSensorModel sensorModel, int pin, int shutdownPin,
+        TTFSensorModel sensorModel, int shutdownPin,
         int address, TTFSensorId id, float minRange, float maxRange
     );
 };

@@ -1,9 +1,8 @@
 #include "TTFSensorConfiguration.hpp"
 #include "Helpers.hpp"
 
-TTFSensorConfiguration::TTFSensorConfiguration(int pin, int shutdownPin, int address, TTFSensorId id, float minRange, float maxRange)
+TTFSensorConfiguration::TTFSensorConfiguration(int shutdownPin, int address, TTFSensorId id, float minRange, float maxRange)
 {
-    this->pin = pin;
     this->shutdownPin = shutdownPin;
     this->address = address;
     this->id = id;
@@ -11,11 +10,6 @@ TTFSensorConfiguration::TTFSensorConfiguration(int pin, int shutdownPin, int add
     this->maxRange = maxRange;
 
     this->name = Helpers::getTTFSensorIDName(id);
-}
-
-int TTFSensorConfiguration::getPin()
-{
-    return this->pin;
 }
 
 int TTFSensorConfiguration::getShutdownPin()

@@ -17,7 +17,7 @@ TTFSensorsController::TTFSensorsController(std::string configFilePath)
     for(std::string sensorName : sensors)
     {
         try {
-            int pin = std::stoi(std::string(data["ttf_sensor_service"][sensorName]["pin"]));
+            //int pin = std::stoi(std::string(data["ttf_sensor_service"][sensorName]["pin"]));
             int shutdownPin = std::stoi(std::string(data["ttf_sensor_service"][sensorName]["shutdownPin"]));
             int address = std::stoi(std::string(data["ttf_sensor_service"][sensorName]["address"]));
             float minRange = std::stof(std::string(data["ttf_sensor_service"][sensorName]["minRange"]));
@@ -26,7 +26,7 @@ TTFSensorsController::TTFSensorsController(std::string configFilePath)
 
             std::string type = std::string(data["ttf_sensor_service"][sensorName]["type"]);
             TTFSensorModel sensorModel = Helpers::getTTFSensorModelFromString(type);
-            this->sensors.push_back(TTFSensorFactory::makeTTFSensor(sensorModel, pin, shutdownPin, address, id, minRange, maxRange));
+            this->sensors.push_back(TTFSensorFactory::makeTTFSensor(sensorModel, shutdownPin, address, id, minRange, maxRange));
         } catch(const TTFSensorConfigurationException& e) {
             std::cerr << "Can not create TTFSensor: " << e.what() << std::endl;
         } catch(const TTFSensorInicializationException& e) {
@@ -36,4 +36,7 @@ TTFSensorsController::TTFSensorsController(std::string configFilePath)
         }
         
     }
+
+    // TODO: Loop over all sensors and disable it
+    // TODO: Loop over all sensors and turn it with setting address
 }

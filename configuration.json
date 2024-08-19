@@ -14,33 +14,29 @@
         "port": "50052",
         "gate_a_parking_ttf_sensor": {
             "type": "vl53l1x",
-            "pin": "12",
-            "shutdownPin": "20",
-            "address": "0x13",
+            "shutdownPin": "19",
+            "address": "0x30",
             "minRange": "10",
             "maxRange": "200"
         },
         "gate_a_position_ttf_sensor": {
             "type": "vl53l1x",
-            "pin": "12",
-            "shutdownPin": "21",
-            "address": "0x14",
+            "shutdownPin": "26",
+            "address": "0x31",
             "minRange": "10",
             "maxRange": "200"
         },
         "gate_b_parking_ttf_sensor": {
             "type": "vl53l1x",
-            "pin": "12",
             "shutdownPin": "22",
-            "address": "0x15",
+            "address": "0x32",
             "minRange": "10",
             "maxRange": "200"
         },
         "gate_b_position_ttf_sensor": {
             "type": "vl53l1x",
-            "pin": "12",
             "shutdownPin": "23",
-            "address": "0x16",
+            "address": "0x33",
             "minRange": "10",
             "maxRange": "200"
         }

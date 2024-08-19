@@ -9,7 +9,6 @@ using ttf_sensor_api::TTFSensorId;
 
 class TTFSensorConfiguration {
 private:
-    int pin;
     int shutdownPin;
     int address;
     TTFSensorId id;
@@ -18,7 +17,7 @@ private:
     float maxRange;
 
 public:
-    TTFSensorConfiguration(int pin, int shutdownPin, int address, TTFSensorId id, float minRange, float maxRange);
+    TTFSensorConfiguration(int shutdownPin, int address, TTFSensorId id, float minRange, float maxRange);
 
     int getPin();
     int getShutdownPin();

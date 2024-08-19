@@ -1,0 +1,23 @@
+{
+    "digital_sensor_service": {
+        "address_ip": "::",
+        "port": "50051",
+        "gate_a_presence_sensor": {
+            "gpio": "14"
+        },
+        "gate_b_presence_sensor": {
+            "gpio": "15"
+        }
+    },
+    "ttf_sensor_service": {
+        "address_ip": "::",
+        "port": "50052",
+        "gate_a_parking_ttf_sensor": {
+            "type": "vl53l1x",
+            "shutdownPin": "19",
+            "address": "0x30",
+            "minRange": "10",
+            "maxRange": "200"
+        }
+    }
+}
